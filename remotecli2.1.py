@@ -1,6 +1,8 @@
 from PyQt5 import QtWidgets, uic
 from desing import Ui_MainWindow
 import sys
+import time
+
 
 class mywindow(QtWidgets.QMainWindow):
 
@@ -14,12 +16,20 @@ class mywindow(QtWidgets.QMainWindow):
 
 
     def connectionstart(self):
-       self.ui.label_4.setText("Подключение к серверу авторизации")
-       self.ui.label.adjustSize()
-       import sshconnect
-       import threading
-       tun1 = threading.Thread(target=sshconnect.sshtunconnect, daemon=True)
-       tun1.start()
+        """
+        Функция подключается к керио передает введенную фамилию в качестве аргумента для поиска пользователя и ip адреса
+        его компьютера в локальной сети. Далее kerio возвращает найденный ip адрес и передает в качестве аргумента для
+        проброса порта на второй тоннель
+        """
+        self.ui.label_4.setText("Подключение к серверу авторизации")
+        self.ui.label.adjustSize()
+
+        import sshconnect
+        local_ip = sshconnect.getip()
+        print(local_ip)
+        # time.sleep (10)
+        # sshconnect.connecttopc(local_ip)
+
 
     def vihod(self):
         """
