@@ -25,9 +25,9 @@ class mywindow(QtWidgets.QMainWindow):
         self.ui.label.adjustSize()
 
         import sshconnect
-        local_ip = sshconnect.getip()
+        local_ip = sshconnect.connecting()
         print(local_ip)
-        # time.sleep (10)
+
         # sshconnect.connecttopc(local_ip)
 
 
@@ -42,6 +42,7 @@ class mywindow(QtWidgets.QMainWindow):
         Подключение к керио и поиск ip адреса для дальнейшего проброса порта и подклчюения к нему
         """
         pass
+
     def update(self):
         """
         Запрос обновлений клиента
