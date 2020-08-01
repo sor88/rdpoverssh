@@ -1,4 +1,3 @@
-import json
 import urllib.request
 import http.cookiejar
 import ssl
@@ -18,11 +17,9 @@ opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(jar))
 urllib.request.install_opener(opener)
 ssl._create_default_https_context = ssl._create_unverified_context
 
-def write_json(data, filename='otvetjs.json'):
-    with open(filename, 'w') as f:
-    	json.dump(data, f, indent=2, ensure_ascii=False)
 
 def findinfo_connection(token, perem):
+    print(token)
     usr = ker.callMethod("ActiveHosts.get", {"query":{}, "refresh": True}, token)
     resl = usr.get('result', usr.get('error')) 
     if 'error' in resl:
@@ -37,8 +34,6 @@ def findinfo_connection(token, perem):
     for finfo in lsusr:
         funame = finfo['user']['name']
         fip = finfo['ip']
-        fmac = finfo['macAddress']
-        fhostname = finfo['hostname']
         if perem in funame or perem in fip:
             yield funame, fip
 

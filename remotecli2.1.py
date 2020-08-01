@@ -1,6 +1,7 @@
 from PyQt5 import QtWidgets, uic
 from desing import Ui_MainWindow
 import sys
+import threading
 import time
 
 
@@ -28,6 +29,10 @@ class mywindow(QtWidgets.QMainWindow):
         sshconnect.connecting()
 
 
+        while True:
+             if sshconnect.setstatus:
+                  self.ui.label_4.setText("Поиск ip адреса в локальной сети")
+                  break
 
     def vihod(self):
         """

@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="27154763-4b02-491e-acd0-1accdad10b8d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/kerio/kerio.py" beforeDir="false" afterPath="$PROJECT_DIR$/kerio/kerio.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/kerio/keriofunction.py" beforeDir="false" afterPath="$PROJECT_DIR$/kerio/keriofunction.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/remotecli2.1.py" beforeDir="false" afterPath="$PROJECT_DIR$/remotecli2.1.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sshconnect.py" beforeDir="false" afterPath="$PROJECT_DIR$/sshconnect.py" afterDir="false" />
@@ -50,9 +49,21 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state x="1154" y="575" width="243" height="317" key="#Notifications" timestamp="1596303246321">
+      <screen x="0" y="32" width="2560" height="1408" />
+    </state>
+    <state x="1154" y="575" width="243" height="317" key="#Notifications/0.32.2560.1408@0.32.2560.1408" timestamp="1596303246321" />
     <state x="589" y="363" width="1293" height="862" key="SettingsEditor" timestamp="1596287775018">
       <screen x="0" y="32" width="2560" height="1408" />
     </state>
     <state x="589" y="363" width="1293" height="862" key="SettingsEditor/0.32.2560.1408@0.32.2560.1408" timestamp="1596287775018" />
+    <state width="498" height="447" key="SwitcherDM" timestamp="1596304420028">
+      <screen x="0" y="32" width="2560" height="1408" />
+    </state>
+    <state width="498" height="447" key="SwitcherDM/0.32.2560.1408@0.32.2560.1408" timestamp="1596304420028" />
+    <state x="875" y="468" width="802" height="530" key="Vcs.Push.Dialog.v2" timestamp="1596303212844">
+      <screen x="0" y="32" width="2560" height="1408" />
+    </state>
+    <state x="875" y="468" width="802" height="530" key="Vcs.Push.Dialog.v2/0.32.2560.1408@0.32.2560.1408" timestamp="1596303212844" />
   </component>
 </project>

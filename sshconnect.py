@@ -8,6 +8,7 @@ import sys
 fname = None
 fipp = None
 publicipadress = ('194.247.184.169', 3232)
+setstatus = None
 
 def sshtunconnect(address):
      with open_tunnel(
@@ -20,7 +21,7 @@ def sshtunconnect(address):
          print(server.local_bind_port)
          while True:
              # press Ctrl-C for stopping
-             sleep(1)
+             sleep(5)
 
 def sshtungetip():
       import kerio.kerio as kerio
@@ -37,8 +38,10 @@ def sshtungetip():
       print(server.local_bind_port)  # show assigned local port
       # work with `SECRET SERVICE` through `server.local_bind_port`.
       time.sleep(5)
-      login = 'Потапов'
-      print("Получение ip адреса")
+      login = 'белогуров'
+      global setstatus
+      setstatus = "Получение ip адреса"
+      print(setstatus)
       session = kerio.callMethod("Session.login", {"userName": kerio.username, "password": kerio.password,"application": {"vendor": "Kerio", "name": "Control Api Demo", "version": "8.4.0"}})
       token = session["result"]["token"]
       for funame, fip in kf.findinfo_connection(token, login):
