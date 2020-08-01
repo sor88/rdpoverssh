@@ -4,14 +4,14 @@ import urllib.request
 import http.cookiejar
 import ssl
 import sys
-sys.path.insert(0, '/home/plus/ownCloud/scripts/bot-telegram/myfirstbot/kerio/idl')
+#sys.path.insert(0, '/home/plus/hdd/tmp/deleop/rdpoverssh')
 
 """ Cookie storage is necessary for session handling """
 jar = http.cookiejar.CookieJar()
 opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(jar))
 urllib.request.install_opener(opener)
 """ Hostname or ip address of your Kerio Control instance with protocol, port and credentials """
-ipserver = "192.168.41.1"
+ipserver = "127.0.0.1"
 server = "https://"+ipserver+":4081"
 username = "pl"
 password = "xtvhfc,jk"

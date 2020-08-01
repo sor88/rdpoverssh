@@ -2,15 +2,19 @@ from sshtunnel import open_tunnel
 from time import sleep
 import threading
 import time
+import ssl
+import sys
 
-ip = None
+fname = None
+fipp = None
+publicipadress = ('194.247.184.169', 3232)
 
-def sshtunconnect(ip_local):
+def sshtunconnect(address):
      with open_tunnel(
-         ('90.150.80.113', 2222),
-         ssh_username="itu",
+         publicipadress,
+         ssh_username="dgh",
          ssh_pkey="srv.key",
-         remote_bind_address=(ip_local, 3389),
+         remote_bind_address=address,
          local_bind_address=('localhost', 2222)
      ) as server:
          print(server.local_bind_port)
@@ -19,42 +23,44 @@ def sshtunconnect(ip_local):
              sleep(1)
 
 def sshtungetip():
-      import kerio.kerio as ker
-      import kerio.keriofunction as funker
+      import kerio.kerio as kerio
+      import kerio.keriofunction as kf
       from sshtunnel import SSHTunnelForwarder
-      print(ker.ipserver)
       server = SSHTunnelForwarder(
-          ('90.150.80.113', 2222),
-          ssh_username="itu",
+          publicipadress,
+          ssh_username="dgh",
           ssh_pkey="srv.key",
-          remote_bind_address=(ker.ipserver, 4081),
+          remote_bind_address=('192.168.41.1', 4081),
           local_bind_address=('127.0.0.1', 4081)
       )
       server.start()
       print(server.local_bind_port)  # show assigned local port
       # work with `SECRET SERVICE` through `server.local_bind_port`.
-      time.sleep(4)
-      l = 'Потапов'
+      time.sleep(5)
+      login = 'Потапов'
       print("Получение ip адреса")
-      session = ker.callMethod("Session.login", {"userName": ker.username, "password": ker.password, "application": {"vendor": "Kerio", "name": "Control Api Demo", "version": "8.4.0"}})
+      session = kerio.callMethod("Session.login", {"userName": kerio.username, "password": kerio.password,"application": {"vendor": "Kerio", "name": "Control Api Demo", "version": "8.4.0"}})
       token = session["result"]["token"]
-      for funame, fip in findinfo_connection(token, sys.argv[1]):
-          print(funame, fip)
-      funker.keriologout()
-
-
-      userinfo = funker.main(l)
-      print(userinfo)
+      for funame, fip in kf.findinfo_connection(token, login):
+          sleep(1)
+      kf.keriologout()
       server.close()
-      return (ip_local)
+      time.sleep(3)
+      global fname, fipp
+      fname, fipp = funame, fip
+      print(fname,fipp)
+      return ()
 
 
-def connecttopc(ip_local):
-    tun2 = threading.Thread(target=sshtunconnect, daemon=True, args=(ip_local, ))
-    tun2.start()
-    print("Подключение к ip 2")
-    tun2.join()
-    print("конец")
+def connecttopc():
+    while True:
+        if fipp:
+            address = (fipp, 3389)
+            sshtunconnect(address)
+            print('doing work...')
+            sleep(3)
+            break
+
 
 def connecting():
     tun = (

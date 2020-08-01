@@ -25,10 +25,8 @@ class mywindow(QtWidgets.QMainWindow):
         self.ui.label.adjustSize()
 
         import sshconnect
-        local_ip = sshconnect.sshtungetip()
-        print(local_ip)
+        sshconnect.connecting()
 
-        # sshconnect.connecttopc(local_ip)
 
 
     def vihod(self):
@@ -36,12 +34,6 @@ class mywindow(QtWidgets.QMainWindow):
         Выход
         """
         exit()
-
-    def zaprosip():
-        """
-        Подключение к керио и поиск ip адреса для дальнейшего проброса порта и подклчюения к нему
-        """
-        pass
 
     def update(self):
         """

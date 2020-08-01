@@ -6,7 +6,7 @@ import sys
 import time
 import requests
 # from mywebhook import send_message
-import kerio as ker
+import kerio.kerio as ker
 # from kerio.kerio import callMethod
 # from kerio.kerio import password
 # from kerio.kerio import username

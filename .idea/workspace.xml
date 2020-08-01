@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="27154763-4b02-491e-acd0-1accdad10b8d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kerio/kerio.py" beforeDir="false" afterPath="$PROJECT_DIR$/kerio/kerio.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/kerio/keriofunction.py" beforeDir="false" afterPath="$PROJECT_DIR$/kerio/keriofunction.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/remotecli2.1.py" beforeDir="false" afterPath="$PROJECT_DIR$/remotecli2.1.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sshconnect.py" beforeDir="false" afterPath="$PROJECT_DIR$/sshconnect.py" afterDir="false" />
