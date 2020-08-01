@@ -19,7 +19,6 @@ ssl._create_default_https_context = ssl._create_unverified_context
 
 
 def findinfo_connection(token, perem):
-    print(token)
     usr = ker.callMethod("ActiveHosts.get", {"query":{}, "refresh": True}, token)
     resl = usr.get('result', usr.get('error')) 
     if 'error' in resl:

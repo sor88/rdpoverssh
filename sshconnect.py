@@ -27,6 +27,7 @@ def sshtungetip():
       import kerio.kerio as kerio
       import kerio.keriofunction as kf
       from sshtunnel import SSHTunnelForwarder
+      funame = None
       server = SSHTunnelForwarder(
           publicipadress,
           ssh_username="dgh",
@@ -35,10 +36,9 @@ def sshtungetip():
           local_bind_address=('127.0.0.1', 4081)
       )
       server.start()
-      print(server.local_bind_port)  # show assigned local port
-      # work with `SECRET SERVICE` through `server.local_bind_port`.
-      time.sleep(5)
-      login = 'белогуров'
+      print(server.local_bind_port)
+      time.sleep(3)
+      login = 'Потапов'
       global setstatus
       setstatus = "Получение ip адреса"
       print(setstatus)
@@ -48,15 +48,24 @@ def sshtungetip():
           sleep(1)
       kf.keriologout()
       server.close()
-      time.sleep(3)
       global fname, fipp
+      if funame is None:
+            print("Имя пользователя не найдено среди активных подключений")
+            fname = "Не найдено"
+            return
+      time.sleep(2)
       fname, fipp = funame, fip
       print(fname,fipp)
-      return ()
+      return
 
 
 def connecttopc():
     while True:
+        n = 5
+        if fname == "Не найдено":
+            n += 5
+            sleep(n)
+            break
         if fipp:
             address = (fipp, 3389)
             sshtunconnect(address)

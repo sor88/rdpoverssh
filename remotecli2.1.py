@@ -5,6 +5,8 @@ import threading
 import time
 
 
+
+
 class mywindow(QtWidgets.QMainWindow):
 
     def __init__(self):
@@ -22,17 +24,24 @@ class mywindow(QtWidgets.QMainWindow):
         его компьютера в локальной сети. Далее kerio возвращает найденный ip адрес и передает в качестве аргумента для
         проброса порта на второй тоннель
         """
-        self.ui.label_4.setText("Подключение к серверу авторизации")
-        self.ui.label.adjustSize()
 
         import sshconnect
         sshconnect.connecting()
+        #self.ui.label_4.setText("Подключение к серверу авторизации")
+        writelab = threading.Thread(target=writelabelstatus, daemon=True)
+        writelab.start()
 
-
+    def writelabelstatus(self):
+        self.ui.label_4.setText("Подключение к серверу авторизации")
+        self.ui.label.adjustSize()
         while True:
-             if sshconnect.setstatus:
-                  self.ui.label_4.setText("Поиск ip адреса в локальной сети")
-                  break
+            if sshconnect.setstatus:
+                self.ui.label_4.setText("Поиск компютера в сети")
+                time.sleep(5)
+                break
+            if sshconnect.fname == "Не найдено":
+                self.ui.label_4.setText("Назначенный компьютер для этого имени пользователя найти не удалось")
+                break
 
     def vihod(self):
         """
