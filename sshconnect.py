@@ -18,32 +18,35 @@ def sshtunconnect(ip_local):
              # press Ctrl-C for stopping
              sleep(1)
 
-def sshtunconnect2(ip_local, localport):
+def sshtungetip():
+      import kerio.kerio as ker
+      import kerio.keriofunction as funker
       from sshtunnel import SSHTunnelForwarder
+      print(ker.ipserver)
       server = SSHTunnelForwarder(
           ('90.150.80.113', 2222),
           ssh_username="itu",
           ssh_pkey="srv.key",
-          remote_bind_address=(ip_local, localport),
-          local_bind_address=('127.0.0.1', 2222)
+          remote_bind_address=(ker.ipserver, 4081),
+          local_bind_address=('127.0.0.1', 4081)
       )
       server.start()
       print(server.local_bind_port)  # show assigned local port
       # work with `SECRET SERVICE` through `server.local_bind_port`.
       time.sleep(4)
-    #  server.close()
+      l = 'Потапов'
+      print("Получение ip адреса")
+      session = ker.callMethod("Session.login", {"userName": ker.username, "password": ker.password, "application": {"vendor": "Kerio", "name": "Control Api Demo", "version": "8.4.0"}})
+      token = session["result"]["token"]
+      for funame, fip in findinfo_connection(token, sys.argv[1]):
+          print(funame, fip)
+      funker.keriologout()
 
-def getip():
-    import kerio.kerio as ker
-    import kerio.keriofunction as funker
-    l = 'Потапов'
-    print(ker.ipserver)
-    localport = 4081
-    print("Получение ip адреса")
-    ip = sshtunconnect(ker.ipserver, localport)
-    funker.main(l)
 
-    return(ip_local)
+      userinfo = funker.main(l)
+      print(userinfo)
+      server.close()
+      return (ip_local)
 
 
 def connecttopc(ip_local):
@@ -55,7 +58,7 @@ def connecttopc(ip_local):
 
 def connecting():
     tun = (
-        threading.Thread (target=getip, daemon=True),
+        threading.Thread (target=sshtungetip, daemon=True),
         threading.Thread (target=connecttopc, daemon=True)
     )
     for thread in tun:

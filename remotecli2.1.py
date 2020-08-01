@@ -25,7 +25,7 @@ class mywindow(QtWidgets.QMainWindow):
         self.ui.label.adjustSize()
 
         import sshconnect
-        local_ip = sshconnect.connecting()
+        local_ip = sshconnect.sshtungetip()
         print(local_ip)
 
         # sshconnect.connecttopc(local_ip)

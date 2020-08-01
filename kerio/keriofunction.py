@@ -40,7 +40,7 @@ def findinfo_connection(token, perem):
         fmac = finfo['macAddress']
         fhostname = finfo['hostname']
         if perem in funame or perem in fip:
-            yield funame, fip, fmac, fhostname
+            yield funame, fip
 
 def keriologout():
     session = ker.callMethod("Session.login", {"userName":ker.username, "password":ker.password, "application":{"vendor":"Kerio", "name":"Control Api Demo", "version":"8.4.0"}})
