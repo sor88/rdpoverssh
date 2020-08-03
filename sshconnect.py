@@ -5,10 +5,10 @@ import time
 import ssl
 import sys
 
-fname = None
-fipp = None
 publicipadress = ('194.247.184.169', 3232)
 setstatus = None
+login = None
+lock = threading.Lock()
 
 def sshtunconnect(address):
      with open_tunnel(
@@ -47,37 +47,37 @@ def sshtungetip():
       for funame, fip in kf.findinfo_connection(token, login):
           sleep(1)
       kf.keriologout()
+      print(funame, fip)
       server.close()
-      global fname, fipp
       if funame is None:
             print("Имя пользователя не найдено среди активных подключений")
-            fname = "Не найдено"
-            return
-      time.sleep(2)
-      fname, fipp = funame, fip
-      print(fname,fipp)
-      return
+            funame = "Не найдено"
+            return(funame)
+
+      return(fip)
 
 
 def connecttopc():
-    while True:
-        n = 5
-        if fname == "Не найдено":
+    fip = sshtungetip()
+    if fip is None:
+        print('ip не найден')
+        global setstatus
+        setstatus = "IP локального ПК не найден"
+        return
+    if fip:
+        print('Ip получен')
+        address = (fip, 3389)
+        sshtunconnect (address)
+    if fname == "Не найдено":
             n += 5
             sleep(n)
-            break
-        if fipp:
-            address = (fipp, 3389)
-            sshtunconnect(address)
-            print('doing work...')
-            sleep(3)
-            break
+            return
 
 
 def connecting():
-    tun = (
-        threading.Thread (target=sshtungetip, daemon=True),
-        threading.Thread (target=connecttopc, daemon=True)
-    )
-    for thread in tun:
-        thread.start()
+
+    # if login is None:
+    #     print('Поле логин не может быть пустым')
+    tun1 = threading.Thread(target=connecttopc, daemon=True)
+    tun1.start()
+

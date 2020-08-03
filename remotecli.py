@@ -4,8 +4,15 @@ import sys
 import threading
 import time
 
+setstatus = None
 
-
+def writelabelstatus():
+    import sshconnect
+    if sshconnect.setstatus is None:
+        global setstatust
+        setstatust = "Старт"
+        print(setstatust)
+        return
 
 class mywindow(QtWidgets.QMainWindow):
 
@@ -14,9 +21,10 @@ class mywindow(QtWidgets.QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.ui.pushButton.clicked.connect(self.connectionstart)
+        self.ui.statusbar.showMessage("Программа готова для работы")
         self.ui.pushButton_2.clicked.connect(self.vihod)
-
-
+        # tex = self.ui.lineEdit.text()
+        # print(tex)
 
     def connectionstart(self):
         """
@@ -25,28 +33,40 @@ class mywindow(QtWidgets.QMainWindow):
         проброса порта на второй тоннель
         """
 
-        import sshconnect
-        sshconnect.connecting()
-        #self.ui.label_4.setText("Подключение к серверу авторизации")
-        writelab = threading.Thread(target=writelabelstatus, daemon=True)
-        writelab.start()
 
-    def writelabelstatus(self):
-        self.ui.label_4.setText("Подключение к серверу авторизации")
-        self.ui.label.adjustSize()
-        while True:
-            if sshconnect.setstatus:
-                self.ui.label_4.setText("Поиск компютера в сети")
-                time.sleep(5)
-                break
-            if sshconnect.fname == "Не найдено":
-                self.ui.label_4.setText("Назначенный компьютер для этого имени пользователя найти не удалось")
-                break
+
+      #  self.ui.label_4.setText("Подключение к серверу авторизации")
+        import sshconnect
+
+        sshconnect.login = self.ui.lineEdit.text()
+        time.sleep(1)
+
+
+        potok = threading.Thread(target=writelabelstatus, daemon=True)
+        potok.start()
+        # self.ui.label_4.setText(setstatust)
+        # self.ui.label_4.addText("fsdgjdhfgsdfg")
+        # self.ui.label_4.adjustSize()
+
+        if 2 < 1:
+            self.ui.statusbar.showMessage(setstatust)
+        else:
+            self.ui.statusbar.showMessage(setstatust)
+
+       # self.ui.listWidget.showMessage(setstatus)
+        # tun = threading.Thread(target=sshconnect.connecting)
+        sshconnect.connecting()
+
+
+
+
+
 
     def vihod(self):
         """
         Выход
         """
+        self.ui.label_4.setText ("Выход")
         exit()
 
     def update(self):
