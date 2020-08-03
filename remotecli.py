@@ -23,26 +23,15 @@ class mywindow(QtWidgets.QMainWindow):
         его компьютера в локальной сети. Далее kerio возвращает найденный ip адрес и передает в качестве аргумента для
         проброса порта на второй тоннель
         """
-
-
-
-      #  self.ui.label_4.setText("Подключение к серверу авторизации")
         import sshconnect
-
         sshconnect.login = self.ui.lineEdit.text()
         time.sleep(1)
-
-
         potok = threading.Thread(target=self.writelabelstatus, daemon=True)
         potok.start()
         # self.ui.label_4.setText(setstatust)
         # self.ui.label_4.addText("fsdgjdhfgsdfg")
         # self.ui.label_4.adjustSize()
         self.ui.statusbar.showMessage("Подключение.Пожалуйста подождите...")
-
-
-       # self.ui.listWidget.showMessage(setstatus)
-        # tun = threading.Thread(target=sshconnect.connecting)
         sshconnect.connecting()
 
     def writelabelstatus(self):
