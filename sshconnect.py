@@ -38,7 +38,7 @@ def sshtungetip():
       server.start()
       print(server.local_bind_port)
       time.sleep(3)
-      login = 'Потапов'
+      login = 'белогуров'
       global setstatus
       setstatus = "Получение ip адреса"
       print(setstatus)
@@ -47,25 +47,24 @@ def sshtungetip():
       for funame, fip in kf.findinfo_connection(token, login):
           sleep(1)
       kf.keriologout()
-      print(funame, fip)
       server.close()
+      print("перед if")
       if funame is None:
             print("Имя пользователя не найдено среди активных подключений")
-            funame = "Не найдено"
-            return(funame)
-
+            fip = "IP не найден"
       return(fip)
 
 
 def connecttopc():
     fip = sshtungetip()
-    if fip is None:
-        print('ip не найден')
-        global setstatus
-        setstatus = "IP локального ПК не найден"
+    global setstatus
+    if fip == "IP не найден":
+        print(fip)
+        setstatus = "IP не найден"
         return
     if fip:
         print('Ip получен')
+        setstatus = "ip is found"
         address = (fip, 3389)
         sshtunconnect (address)
     if fname == "Не найдено":

@@ -4,15 +4,6 @@ import sys
 import threading
 import time
 
-setstatus = None
-
-def writelabelstatus():
-    import sshconnect
-    if sshconnect.setstatus is None:
-        global setstatust
-        setstatust = "Старт"
-        print(setstatust)
-        return
 
 class mywindow(QtWidgets.QMainWindow):
 
@@ -42,25 +33,30 @@ class mywindow(QtWidgets.QMainWindow):
         time.sleep(1)
 
 
-        potok = threading.Thread(target=writelabelstatus, daemon=True)
+        potok = threading.Thread(target=self.writelabelstatus, daemon=True)
         potok.start()
         # self.ui.label_4.setText(setstatust)
         # self.ui.label_4.addText("fsdgjdhfgsdfg")
         # self.ui.label_4.adjustSize()
+        self.ui.statusbar.showMessage("Подключение.Пожалуйста подождите...")
 
-        if 2 < 1:
-            self.ui.statusbar.showMessage(setstatust)
-        else:
-            self.ui.statusbar.showMessage(setstatust)
 
        # self.ui.listWidget.showMessage(setstatus)
         # tun = threading.Thread(target=sshconnect.connecting)
         sshconnect.connecting()
 
-
-
-
-
+    def writelabelstatus(self):
+        import sshconnect
+        while True:
+            time.sleep(5)
+            if sshconnect.setstatus is None:
+                setstatust = "Старт"
+                print(setstatust)
+            if sshconnect.setstatus == "ip is found":
+                self.ui.statusbar.showMessage('IP найден, выполняется проброс порта.')
+            if sshconnect.setstatus == "IP не найден":
+                self.ui.statusbar.showMessage(sshconnect.setstatus)
+                break
 
     def vihod(self):
         """
