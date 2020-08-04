@@ -73,7 +73,7 @@ def connecttopc():
         rdpstart = threading.Thread(target=rdpdataconnection, daemon=True)
         rdpstart.start()
         #rdpdataconnection()
-        time.sleep(3)
+        time.sleep(20)
         delkeyuser()
         return
 
