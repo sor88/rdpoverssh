@@ -15,7 +15,7 @@ def sshtunconnect(address):
      server = open_tunnel(
          publicipadress,
          ssh_username="dgh",
-         ssh_pkey="srv.key",
+         ssh_password="Qwerty123!",
          remote_bind_address=address,
          local_bind_address=('localhost', 2222)
      ) 
@@ -36,7 +36,7 @@ def sshtungetip():
       server = SSHTunnelForwarder(
           publicipadress,
           ssh_username="dgh",
-          ssh_pkey="srv.key",
+          ssh_password="Qwerty123!",
           remote_bind_address=('192.168.41.1', 4081),
           local_bind_address=('127.0.0.1', 4081)
       )
@@ -70,7 +70,9 @@ def connecttopc():
         setstatus = "ip is found"
         address = (fip, 3389)
         sshtunconnect (address)
-        rdpdataconnection()
+        rdpstart = threading.Thread(target=rdpdataconnection, daemon=True)
+        rdpstart.start()
+        #rdpdataconnection()
         time.sleep(3)
         delkeyuser()
         return
@@ -80,16 +82,21 @@ def connecttopc():
 def rdpdataconnection():
     import subprocess
     global login, password
-    argscmdkey = ['cmdkey', f'/add:localhost:2222', f'/user:dgh\{login}', f'/pass:{password}']
-    subprocess.Popen(argscmdkey, stdout=subprocess.PIPE, universal_newlines=True)
+    #argscmdkey = ['cmdkey', f'/add:localhost:2222', f'/user:dgh\{login}', f'/pass:{password}']
+    #subprocess.run(argscmdkey, stdout=subprocess.PIPE, universal_newlines=True)
+    subprocess.call(f"cmdkey /add:localhost:2222 /user:{login} /pass:{password}")
     time.sleep(3)
-    argsrdpstart = ['mstsc', '/v', 'localhost:2222']
-    subprocess.Popen(argsrdpstart, stdout=subprocess.PIPE, universal_newlines=True)
+    subprocess.call("mstsc /v:localhost:2222")
+    #argsrdpstart = ['mstsc', '/v', 'localhost:2222']
+    #subprocess.run(argsrdpstart, stdout=subprocess.PIPE, universal_newlines=True)
+    
+    
     
 def delkeyuser():
     import subprocess
-    argscmdkey = ['cmdkey', '/delete:localhost:2222']
-    subprocess.Popen(argscmdkey, stdout=subprocess.PIPE, universal_newlines=True)
+    #argscmdkey = ['cmdkey', '/delete localhost:2222']
+    subprocess.call("cmdkey /delete localhost:2222")
+    #subprocess.run(argscmdkey, stdout=subprocess.PIPE, universal_newlines=True)
     
 def connecting():
 
