@@ -12,18 +12,22 @@ password = None
 lock = threading.Lock()
 
 def sshtunconnect(address):
-     with open_tunnel(
+     server = open_tunnel(
          publicipadress,
          ssh_username="dgh",
          ssh_pkey="srv.key",
          remote_bind_address=address,
          local_bind_address=('localhost', 2222)
-     ) as server:
-         print(server.local_bind_port)
-         while True:
+     ) 
+     #as server:
+     server.start()
+ #   time.sleep(5)
+     print(server.local_bind_port)
+     
+         #while True:
              # press Ctrl-C for stopping
-             sleep(5)
-
+          #   sleep(5)             
+             
 def sshtungetip():
       import kerio.kerio as kerio
       import kerio.keriofunction as kf
@@ -66,12 +70,27 @@ def connecttopc():
         setstatus = "ip is found"
         address = (fip, 3389)
         sshtunconnect (address)
-    if fname == "Не найдено":
-            n += 5
-            sleep(n)
-            return
+        rdpdataconnection()
+        time.sleep(3)
+        delkeyuser()
+        return
 
 
+
+def rdpdataconnection():
+    import subprocess
+    global login, password
+    argscmdkey = ['cmdkey', f'/add:localhost:2222', f'/user:dgh\{login}', f'/pass:{password}']
+    subprocess.Popen(argscmdkey, stdout=subprocess.PIPE, universal_newlines=True)
+    time.sleep(3)
+    argsrdpstart = ['mstsc', '/v', 'localhost:2222']
+    subprocess.Popen(argsrdpstart, stdout=subprocess.PIPE, universal_newlines=True)
+    
+def delkeyuser():
+    import subprocess
+    argscmdkey = ['cmdkey', '/delete:localhost:2222']
+    subprocess.Popen(argscmdkey, stdout=subprocess.PIPE, universal_newlines=True)
+    
 def connecting():
 
     # if login is None:
