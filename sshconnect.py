@@ -8,6 +8,7 @@ import sys
 publicipadress = ('194.247.184.169', 3232)
 setstatus = None
 login = None
+password = None
 lock = threading.Lock()
 
 def sshtunconnect(address):
@@ -38,7 +39,7 @@ def sshtungetip():
       server.start()
       print(server.local_bind_port)
       time.sleep(3)
-      login = 'белогуров'
+      print(login)
       global setstatus
       setstatus = "Получение ip адреса"
       print(setstatus)
