@@ -39,7 +39,6 @@ def sshtungetip():
       server.start()
       print(server.local_bind_port)
       time.sleep(3)
-      print(login)
       global setstatus
       setstatus = "Получение ip адреса"
       print(setstatus)
@@ -49,7 +48,6 @@ def sshtungetip():
           sleep(1)
       kf.keriologout()
       server.close()
-      print("перед if")
       if funame is None:
             print("Имя пользователя не найдено среди активных подключений")
             fip = "IP не найден"

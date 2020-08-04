@@ -26,6 +26,9 @@ class mywindow(QtWidgets.QMainWindow):
         potok.start()
         import sshconnect
         sshconnect.login = self.ui.lineEdit.text()
+        if sshconnect.login == '':
+            sshconnect.setstatus = "emptylogin"
+            return
         sshconnect.password = self.ui.lineEdit_2.text()
         if sshconnect.password == '':
             sshconnect.setstatus = "emptypassword"
@@ -39,9 +42,9 @@ class mywindow(QtWidgets.QMainWindow):
         import sshconnect
         while True:
             time.sleep(1)
-            if sshconnect.setstatus is None:
-                setstatust = "Старт"
-                print(setstatust)
+            if sshconnect.setstatus == 'emptylogin':
+                self.ui.statusbar.showMessage("Поле Фамилия не заполнено")
+                break
             if sshconnect.setstatus == 'emptypassword':
                 self.ui.statusbar.showMessage("Поле пароль не заполнено")
                 break

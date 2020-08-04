@@ -100,10 +100,10 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "RDP over SSH Client"))
-        self.label_4.setText(_translate("MainWindow", "Подключение к  RDP ДГХ"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "RDP over SSH"))
+        self.label_4.setText(_translate("MainWindow", "Подключение RDP ДГХ"))
         self.pushButton_2.setText(_translate("MainWindow", "Выход"))
-        self.pushButton.setText(_translate("MainWindow", "Подключить"))
+        self.pushButton.setText(_translate("MainWindow", "Подключиться"))
         self.label.setText(_translate("MainWindow", "Фамилия  "))
         self.label_2.setText(_translate("MainWindow", "Пароль"))
         self.menu.setTitle(_translate("MainWindow", "Меню"))
