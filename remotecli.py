@@ -34,10 +34,8 @@ class mywindow(QtWidgets.QMainWindow):
         if sshconnect.password == '':
             sshconnect.setstatus = "emptypassword"
             return
-        #tex = self.ui.lineEdit.text()
         print(sshconnect.login)
         self.ui.statusbar.showMessage("Подключение. Пожалуйста подождите...")
-       # sshconnect.connecting()
         tun1 = threading.Thread(target=sshconnect.connecttopc, daemon=True)
         tun1.start()
 
@@ -56,7 +54,9 @@ class mywindow(QtWidgets.QMainWindow):
                 self.ui.statusbar.showMessage("Программа готова к работе")
                 break
             if sshconnect.setstatus == "ip is found":
-                self.ui.statusbar.showMessage('IP найден, выполняется проброс порта.')
+                self.ui.statusbar.showMessage('IP найден. Выполняется подключение.')
+                time.sleep(10)
+                self.ui.statusbar.clearMessage()
                 break
             if sshconnect.setstatus == "IP не найден":
                 self.ui.statusbar.showMessage(sshconnect.setstatus)

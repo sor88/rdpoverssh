@@ -98,10 +98,4 @@ def delkeyuser():
     subprocess.call("cmdkey /delete localhost:2222")
     #subprocess.run(argscmdkey, stdout=subprocess.PIPE, universal_newlines=True)
     
-def connecting():
-
-    # if login is None:
-    #     print('Поле логин не может быть пустым')
-    tun1 = threading.Thread(target=connecttopc, daemon=True)
-    tun1.start()
 
