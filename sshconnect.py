@@ -73,29 +73,22 @@ def connecttopc():
         rdpstart = threading.Thread(target=rdpdataconnection, daemon=True)
         rdpstart.start()
         #rdpdataconnection()
-        time.sleep(20)
-        delkeyuser()
-        return
+
 
 
 
 def rdpdataconnection():
     import subprocess
     global login, password
-    #argscmdkey = ['cmdkey', f'/add:localhost:2222', f'/user:dgh\{login}', f'/pass:{password}']
-    #subprocess.run(argscmdkey, stdout=subprocess.PIPE, universal_newlines=True)
-    subprocess.call(f"cmdkey /add:localhost:2222 /user:{login} /pass:{password}")
+    subprocess.call(f"cmdkey /add:localhost /user:dgh\{login} /pass:{password}")
     time.sleep(3)
     subprocess.call("mstsc /v:localhost:2222")
-    #argsrdpstart = ['mstsc', '/v', 'localhost:2222']
-    #subprocess.run(argsrdpstart, stdout=subprocess.PIPE, universal_newlines=True)
-    
+    time.sleep(7)
+    delkeyuser()
     
     
 def delkeyuser():
     import subprocess
-    #argscmdkey = ['cmdkey', '/delete localhost:2222']
-    subprocess.call("cmdkey /delete localhost:2222")
-    #subprocess.run(argscmdkey, stdout=subprocess.PIPE, universal_newlines=True)
+    subprocess.call("cmdkey /delete localhost")
     
 
