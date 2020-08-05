@@ -34,7 +34,7 @@ class Ui_MainWindow(object):
         self.label_3.setStyleSheet("width: 100%\n"
 "")
         self.label_3.setText("")
-        self.label_3.setPixmap(QtGui.QPixmap(":/image/89.png"))
+        self.label_3.setPixmap(QtGui.QPixmap("image/89.png"))
         self.label_3.setObjectName("label_3")
         self.label_4 = QtWidgets.QLabel(self.centralwidget)
         self.label_4.setGeometry(QtCore.QRect(140, 40, 161, 18))

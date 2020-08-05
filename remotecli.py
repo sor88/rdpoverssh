@@ -1,5 +1,6 @@
 from PyQt5 import QtWidgets, uic
 from desing import Ui_MainWindow
+from PyQt5.QtCore import QCoreApplication
 import sys
 import threading
 import time
@@ -12,8 +13,8 @@ class mywindow(QtWidgets.QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.ui.pushButton.clicked.connect(self.connectionstart)
-        self.ui.statusbar.showMessage("Программа готова для работы")
-        self.ui.pushButton_2.clicked.connect(self.vihod)
+        self.ui.statusbar.showMessage("Программа готова к работе")
+        self.ui.pushButton_2.clicked.connect(QCoreApplication.instance().quit)
 
 
     def connectionstart(self):
@@ -35,31 +36,37 @@ class mywindow(QtWidgets.QMainWindow):
             return
         #tex = self.ui.lineEdit.text()
         print(sshconnect.login)
-        self.ui.statusbar.showMessage("Подключение.Пожалуйста подождите...")
-        sshconnect.connecting()
+        self.ui.statusbar.showMessage("Подключение. Пожалуйста подождите...")
+       # sshconnect.connecting()
+        tun1 = threading.Thread(target=sshconnect.connecttopc, daemon=True)
+        tun1.start()
 
     def writelabelstatus(self):
         import sshconnect
         while True:
             time.sleep(1)
             if sshconnect.setstatus == 'emptylogin':
-                self.ui.statusbar.showMessage("Поле Фамилия не заполнено")
+                self.ui.statusbar.showMessage("Поле: 'Фамилия' не заполнено")
+                time.sleep(3)
+                self.ui.statusbar.showMessage("Программа готова к работе")
                 break
             if sshconnect.setstatus == 'emptypassword':
-                self.ui.statusbar.showMessage("Поле пароль не заполнено")
+                self.ui.statusbar.showMessage("Поле: 'Пароль' не заполнено")
+                time.sleep(3)
+                self.ui.statusbar.showMessage("Программа готова к работе")
                 break
             if sshconnect.setstatus == "ip is found":
                 self.ui.statusbar.showMessage('IP найден, выполняется проброс порта.')
+                break
             if sshconnect.setstatus == "IP не найден":
                 self.ui.statusbar.showMessage(sshconnect.setstatus)
                 break
-
+            
     def vihod(self):
         """
         Выход
         """
-        self.ui.label_4.setText ("Выход")
-        exit()
+        sys.exit()
 
     def update(self):
         """
@@ -71,8 +78,4 @@ class mywindow(QtWidgets.QMainWindow):
 app = QtWidgets.QApplication([])
 application = mywindow()
 application.show()
-
-#win = uic.loadUi ("untitled.ui")  # расположение вашего файла .ui
-
-#win.show ()
 sys.exit (app.exec ())

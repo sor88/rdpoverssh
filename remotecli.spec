@@ -6,7 +6,7 @@ block_cipher = None
 a = Analysis(['remotecli.py'],
              pathex=['C:\\Users\\plus\\Desktop\\develop\\rdpoverssh'],
              binaries=[],
-             datas=[],
+             datas=[('image', 'imgdata'), ('image/89.png', 'img'), ('image/89.ico', 'ico')],
              hiddenimports=[],
              hookspath=[],
              runtime_hooks=[],
@@ -30,4 +30,4 @@ exe = EXE(pyz,
           upx=True,
           upx_exclude=[],
           runtime_tmpdir=None,
-          console=False )
+          console=False , icon='image\\89.ico')

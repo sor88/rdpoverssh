@@ -69,7 +69,7 @@ def connecttopc():
         print('Ip получен')
         setstatus = "ip is found"
         address = (fip, 3389)
-        sshtunconnect (address)
+        sshtunconnect(address)
         rdpstart = threading.Thread(target=rdpdataconnection, daemon=True)
         rdpstart.start()
         #rdpdataconnection()
