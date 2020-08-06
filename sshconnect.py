@@ -5,7 +5,7 @@ import time
 import ssl
 import sys
 
-publicipadress = ('194.247.184.169', 3232)
+publicipadress = ('REMOTE_PUBLIC_IP', 3232) # Публичный IP адрес и порт ssh сервера
 setstatus = None
 login = None
 password = None
@@ -14,10 +14,10 @@ lock = threading.Lock()
 def sshtunconnect(address):
      server = open_tunnel(
          publicipadress,
-         ssh_username="dgh",
-         ssh_password="Qwerty123!",
+         ssh_username="LOGIN_SSH",
+         ssh_password="PASSWORD_SSH",
          remote_bind_address=address,
-         local_bind_address=('localhost', 2222)
+         local_bind_address=('localhost', 2222) #  адрес и порт откуда происходит проброс
      ) 
      #as server:
      server.start()
@@ -35,9 +35,9 @@ def sshtungetip():
       funame = None
       server = SSHTunnelForwarder(
           publicipadress,
-          ssh_username="dgh",
-          ssh_password="Qwerty123!",
-          remote_bind_address=('192.168.41.1', 4081),
+          ssh_username="LOGIN_SSH",
+          ssh_password="PASSWORD_SSH!",
+          remote_bind_address=('IP_Kerio_FIREWALL', 4081), # ip адрес и порт kerio control
           local_bind_address=('127.0.0.1', 4081)
       )
       server.start()
@@ -80,7 +80,7 @@ def connecttopc():
 def rdpdataconnection():
     import subprocess
     global login, password
-    subprocess.call(f"cmdkey /add:localhost /user:dgh\{login} /pass:{password}")
+    subprocess.call(f"cmdkey /add:localhost /user:DOMAINMAIN\{login} /pass:{password}") # Если пользователи не доменные DOMAIN\ убрать
     time.sleep(3)
     subprocess.call("mstsc /v:localhost:2222")
     time.sleep(7)
