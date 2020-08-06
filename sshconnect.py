@@ -12,6 +12,9 @@ password = None
 lock = threading.Lock()
 
 def sshtunconnect(address):
+    """
+     Функция установки ssh соединения с найденным ip.
+    """
      server = open_tunnel(
          publicipadress,
          ssh_username="LOGIN_SSH",
@@ -25,6 +28,9 @@ def sshtunconnect(address):
 
              
 def sshtungetip():
+    """
+    Функция получения ip адреса из Kerio Control
+    """
       import kerio.kerio as kerio
       import kerio.keriofunction as kf
       from sshtunnel import SSHTunnelForwarder
@@ -55,6 +61,9 @@ def sshtungetip():
 
 
 def connecttopc():
+    """
+    Основная управляющая функция. получает ip и запускает функцию соединения.
+    """
     fip = sshtungetip()
     global setstatus
     if fip == "IP не найден":
@@ -68,12 +77,14 @@ def connecttopc():
         sshtunconnect(address)
         rdpstart = threading.Thread(target=rdpdataconnection, daemon=True)
         rdpstart.start()
-        #rdpdataconnection()
 
 
 
 
 def rdpdataconnection():
+    """
+    Вызов  RDP с параметрами.
+    """
     import subprocess
     global login, password
     subprocess.call(f"cmdkey /add:localhost /user:DOMAINMAIN\{login} /pass:{password}") # Если пользователи не доменные DOMAIN\ убрать

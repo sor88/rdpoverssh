@@ -40,6 +40,9 @@ class mywindow(QtWidgets.QMainWindow):
         tun1.start()
 
     def writelabelstatus(self):
+        """
+        Функция выполняется следит за состоянием выполнения кода и изменяет сообщения в статус баре. Работает в отдельном потоке ( не блокирует основной поток, и форму приложения ).
+        """
         import sshconnect
         while True:
             time.sleep(1)
