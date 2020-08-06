@@ -5,7 +5,7 @@ import time
 import ssl
 import sys
 
-publicipadress = ('REMOTE_PUBLIC_IP', 3232) # Публичный IP адрес и порт ssh сервера
+publicipadress = ('REMOTE_PUBLIC_IP', 3232)  # Публичный IP адрес и порт ssh сервера
 setstatus = None
 login = None
 password = None
@@ -16,17 +16,13 @@ def sshtunconnect(address):
          publicipadress,
          ssh_username="LOGIN_SSH",
          ssh_password="PASSWORD_SSH",
+#         ssh_pkey="srv.key", # можно использовать вместо пароля файл ключа
          remote_bind_address=address,
          local_bind_address=('localhost', 2222) #  адрес и порт откуда происходит проброс
-     ) 
-     #as server:
+     )
      server.start()
- #   time.sleep(5)
      print(server.local_bind_port)
-     
-         #while True:
-             # press Ctrl-C for stopping
-          #   sleep(5)             
+
              
 def sshtungetip():
       import kerio.kerio as kerio
