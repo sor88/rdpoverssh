@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="/">
+    <file>image/89.png</file>
+	<file>image/89.ico</file>
+	<file>srv.key</file>
+  </qresource>
+</RCC>

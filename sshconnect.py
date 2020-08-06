@@ -5,39 +5,41 @@ import time
 import ssl
 import sys
 
-publicipadress = ('194.247.184.169', 3232)
+publicipadress = ('REMOTE_PUBLIC_IP', 3232)  # Публичный IP адрес и порт ssh сервера
 setstatus = None
 login = None
 password = None
 lock = threading.Lock()
 
 def sshtunconnect(address):
+    """
+     Функция установки ssh соединения с найденным ip.
+    """
      server = open_tunnel(
          publicipadress,
-         ssh_username="dgh",
-         ssh_password="Qwerty123!",
+         ssh_username="LOGIN_SSH",
+         ssh_password="PASSWORD_SSH",
+#         ssh_pkey="srv.key", # можно использовать вместо пароля файл ключа
          remote_bind_address=address,
-         local_bind_address=('localhost', 2222)
-     ) 
-     #as server:
+         local_bind_address=('localhost', 2222) #  адрес и порт откуда происходит проброс
+     )
      server.start()
- #   time.sleep(5)
      print(server.local_bind_port)
-     
-         #while True:
-             # press Ctrl-C for stopping
-          #   sleep(5)             
+
              
 def sshtungetip():
+    """
+    Функция получения ip адреса из Kerio Control
+    """
       import kerio.kerio as kerio
       import kerio.keriofunction as kf
       from sshtunnel import SSHTunnelForwarder
       funame = None
       server = SSHTunnelForwarder(
           publicipadress,
-          ssh_username="dgh",
-          ssh_password="Qwerty123!",
-          remote_bind_address=('192.168.41.1', 4081),
+          ssh_username="LOGIN_SSH",
+          ssh_password="PASSWORD_SSH!",
+          remote_bind_address=('IP_Kerio_FIREWALL', 4081), # ip адрес и порт kerio control
           local_bind_address=('127.0.0.1', 4081)
       )
       server.start()
@@ -59,6 +61,9 @@ def sshtungetip():
 
 
 def connecttopc():
+    """
+    Основная управляющая функция. получает ip и запускает функцию соединения.
+    """
     fip = sshtungetip()
     global setstatus
     if fip == "IP не найден":
@@ -69,39 +74,28 @@ def connecttopc():
         print('Ip получен')
         setstatus = "ip is found"
         address = (fip, 3389)
-        sshtunconnect (address)
+        sshtunconnect(address)
         rdpstart = threading.Thread(target=rdpdataconnection, daemon=True)
         rdpstart.start()
-        #rdpdataconnection()
-        time.sleep(20)
-        delkeyuser()
-        return
+
 
 
 
 def rdpdataconnection():
+    """
+    Вызов  RDP с параметрами.
+    """
     import subprocess
     global login, password
-    #argscmdkey = ['cmdkey', f'/add:localhost:2222', f'/user:dgh\{login}', f'/pass:{password}']
-    #subprocess.run(argscmdkey, stdout=subprocess.PIPE, universal_newlines=True)
-    subprocess.call(f"cmdkey /add:localhost:2222 /user:{login} /pass:{password}")
+    subprocess.call(f"cmdkey /add:localhost /user:DOMAINMAIN\{login} /pass:{password}") # Если пользователи не доменные DOMAIN\ убрать
     time.sleep(3)
     subprocess.call("mstsc /v:localhost:2222")
-    #argsrdpstart = ['mstsc', '/v', 'localhost:2222']
-    #subprocess.run(argsrdpstart, stdout=subprocess.PIPE, universal_newlines=True)
-    
+    time.sleep(7)
+    delkeyuser()
     
     
 def delkeyuser():
     import subprocess
-    #argscmdkey = ['cmdkey', '/delete localhost:2222']
-    subprocess.call("cmdkey /delete localhost:2222")
-    #subprocess.run(argscmdkey, stdout=subprocess.PIPE, universal_newlines=True)
+    subprocess.call("cmdkey /delete localhost")
     
-def connecting():
-
-    # if login is None:
-    #     print('Поле логин не может быть пустым')
-    tun1 = threading.Thread(target=connecttopc, daemon=True)
-    tun1.start()
 

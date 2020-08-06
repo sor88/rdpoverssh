@@ -13,8 +13,8 @@ urllib.request.install_opener(opener)
 """ Hostname or ip address of your Kerio Control instance with protocol, port and credentials """
 ipserver = "127.0.0.1"
 server = "https://"+ipserver+":4081"
-username = "pl"
-password = "xtvhfc,jk"
+username = "kerio_admin_read_access_login"
+password = "kerio_admin_read_admin_pass"
 ssl._create_default_https_context = ssl._create_unverified_context  # Убирает ошибку сертификата SSL
 
 def callMethod(method, params, token = None):
