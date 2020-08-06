@@ -18,10 +18,25 @@
 Файл дизайна для python desing.py
 Файл графических ресурсов res.py
 Основной файл настройки подключения sshconnect.py
+```
+publicipadress = ('REMOTE_PUBLIC_IP', 3232) # настройка ip адреса подключения к ssh серверу.
+def sshtunconnect (address):
+    ssh_username="LOGIN_SSH", # логин для подключения к ssh серверу 
+    ssh_password="PASSWORD_SSH", # пароль для подключения к ssh серверу
+    ssh_pkey="srv.key", # файл ключа для подключения к ssh серверу
+    local_bind_address=('localhost', 2222) #  адрес и порт откуда происходит проброс
 
-
-
-
+def sshtungetip():
+    remote_bind_address=('IP_Kerio_FIREWALL', 4081), # ip адрес и порт kerio control
+   
+def rdpdataconnection():
+    subprocess.call(f"cmdkey /add:localhost /user:DOMAINMAIN\{login} /pass:{password}") # Если пользователи не доменные DOMAIN\ убрать  
+```
+Файл kerio/kerio.py
+```
+username = "kerio_admin_read_access_login" логин от kerio control, достаточно ограниченной учетной записи с правами только для чтения
+password = "kerio_admin_read_admin_pass"    пароль от kerio control
+```
 Планы:
 
 :black_square_button: Делать или не делать вот в чем вопрос?
