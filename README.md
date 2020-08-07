@@ -24,14 +24,14 @@ Kerio в качестве сервер шлюза с настройкой пол
 ![Alt-текст](https://github.com/sor88/rdpoverssh/blob/master/map.png?raw=true)
 
 
-#### Настройка перед компиляцией в exe:
+#### Настройка:
 
-Основной файл запуска программы remotecli.py
-Файл настроек подключений sshconnect.py
-Файл дизайна для python desing.py
-Файл графических ресурсов res.py
+Основной файл запуска программы remotecli.py    
+Файл настроек подключений sshconnect.py 
+Файл дизайна для python desing.py   
+Файл графических ресурсов res.py    
 
-Основной файл настройки подключения sshconnect.py
+Основной файл настройки подключения sshconnect.py   
 ```
 publicipadress = ('REMOTE_PUBLIC_IP', 3232) # настройка ip адреса подключения к ssh серверу.
 def sshtunconnect (address):
@@ -46,7 +46,7 @@ def sshtungetip():
 def rdpdataconnection():
     subprocess.call(f"cmdkey /add:localhost /user:DOMAINMAIN\{login} /pass:{password}") # Если пользователи не доменные DOMAIN\ убрать  
 ```
-Файл kerio/kerio.py
+Файл kerio/kerio.py 
 ```
 username = "kerio_admin_read_access_login" логин от kerio control, достаточно ограниченной учетной записи с правами только для чтения
 password = "kerio_admin_read_admin_pass"    пароль от kerio control
