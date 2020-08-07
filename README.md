@@ -2,7 +2,7 @@
 ( SSH + Kerio Control + RDP)
 
 Используются библиотеки sshtunnel, PyQt5, threading и api Kerio Control доступный по ссылке https://manuals.gfi.com/en/kerio/api/control/reference/index.html
-или в виде реализации готовых библиотек pykerio, python-kerio-api
+Так же для работы с api kerio подойдут одна из готовых библиотек pykerio, python-kerio-api
 
 Схема настройка серверной части:
 Сервер SSH с белым IP, с ограниченным пользователем с параметром nologin, авторизацией по паролю или ключу. Kerio в качестве сервер шлюза с настройкой пользователей MS Active Directory и привязкой по MAC или IP для каждого пользователя.
