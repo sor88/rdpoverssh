@@ -6,37 +6,65 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>461</width>
-    <height>254</height>
+    <width>443</width>
+    <height>252</height>
    </rect>
+  </property>
+  <property name="cursor">
+   <cursorShape>ArrowCursor</cursorShape>
   </property>
   <property name="windowTitle">
    <string>RDP over SSH Client</string>
   </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true">QMainWindow {
+
+}
+
+QWidget {
+background-color: #fafafa;
+font-family: apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;, Arial, sans-serif;
+color: #212529;
+font-weight: bold; 
+text-color: black;
+}
+
+QLabel {
+
+}
+
+QLineEdit {
+padding: 0 10px 0 10px;
+background-color: #ffffff;
+box-shadow: 0 0 0 0; 
+border: 1px solid #ebebeb;
+border-radius: 15px;
+/* color: black; */
+}
+
+QPushButton{
+background-color: black;
+border: 1px solid black;
+border-radius: 15px;
+display: flex;
+justify-content: center;
+background-color: #1c1c1c;
+color: white;
+position: relative;
+padding: 5px;
+}</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
-    <string notr="true">    QPuchButton{
-	background: transparent url('bg_button_a.gif') no-repeat scroll top right;
-    color: #444;
-    display: block;
-    float: left;
-    font: normal 24px arial, sans-serif;
-    height: 24px;
-    margin-right: 6px;
-    padding-right: 18px; /* sliding doors padding */
-    text-decoration: none;
-}</string>
+    <string notr="true"/>
    </property>
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
       <x>20</x>
       <y>70</y>
-      <width>101</width>
-      <height>101</height>
+      <width>81</width>
+      <height>91</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -53,14 +81,22 @@
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>40</y>
-      <width>161</width>
-      <height>18</height>
+      <x>50</x>
+      <y>20</y>
+      <width>341</width>
+      <height>20</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
     <property name="text">
-     <string>Подключение к  RDP ДГХ</string>
+     <string>Версия специально для МКУ &quot;ФДГХ&quot;</string>
     </property>
    </widget>
    <widget class="QWidget" name="widget" native="true">
@@ -76,7 +112,7 @@
    <widget class="QPushButton" name="pushButton_2">
     <property name="geometry">
      <rect>
-      <x>330</x>
+      <x>320</x>
       <y>170</y>
       <width>101</width>
       <height>30</height>
@@ -89,9 +125,9 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>220</x>
+      <x>213</x>
       <y>170</y>
-      <width>94</width>
+      <width>101</width>
       <height>30</height>
      </rect>
     </property>
@@ -102,49 +138,57 @@
      <string>Подключить</string>
     </property>
    </widget>
-   <widget class="QWidget" name="layoutWidget">
+   <widget class="QLineEdit" name="lineEdit_2">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>120</y>
+      <width>211</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="echoMode">
+     <enum>QLineEdit::Password</enum>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>71</y>
+      <width>211</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>130</y>
+      <width>51</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Пароль</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
       <x>140</x>
       <y>80</y>
-      <width>291</width>
-      <height>78</height>
+      <width>60</width>
+      <height>16</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <item>
-        <widget class="QLabel" name="label">
-         <property name="text">
-          <string>Фамилия  </string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_2">
-         <property name="text">
-          <string>Пароль</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QVBoxLayout" name="verticalLayout_2">
-       <item>
-        <widget class="QLineEdit" name="lineEdit"/>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="lineEdit_2">
-         <property name="echoMode">
-          <enum>QLineEdit::Password</enum>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-    </layout>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string>Логин</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -152,24 +196,10 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>461</width>
-     <height>19</height>
+     <width>443</width>
+     <height>23</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menu">
-    <property name="title">
-     <string>Меню</string>
-    </property>
-   </widget>
-   <widget class="QMenu" name="menu_2">
-    <property name="title">
-     <string>Справка</string>
-    </property>
-    <addaction name="action"/>
-    <addaction name="action_2"/>
-   </widget>
-   <addaction name="menu"/>
-   <addaction name="menu_2"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="action">
