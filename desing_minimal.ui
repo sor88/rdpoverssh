@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>341</width>
+    <width>358</width>
     <height>362</height>
    </rect>
   </property>
@@ -22,7 +22,8 @@
 }
 
 QWidget {
-background-color: #fafafa;
+/* цвета #fafafa; ededed; */
+background-color: #ededed;
 font-family: apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;, Arial, sans-serif;
 color: #212529;
 font-weight: bold; 
@@ -38,7 +39,6 @@ padding: 0 10px 0 10px;
 font-size: 18px;
 font-weight: normal;
 background-color: #ffffff;
-box-shadow: 0 0 0 0; 
 border: 1px solid #ebebeb;
 border-radius: 12px;
 /* color: black; */
@@ -54,6 +54,14 @@ background-color: #1c1c1c;
 color: white;
 position: relative;
 padding: 5px;
+}
+
+QPushButton:hover{
+background-color: #2e2e2e;
+}
+
+QPushButton:a{
+background-color: white;
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -73,7 +81,7 @@ padding: 5px;
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>90</x>
+      <x>100</x>
       <y>270</y>
       <width>171</width>
       <height>41</height>
@@ -88,7 +96,7 @@ padding: 5px;
      <rect>
       <x>20</x>
       <y>200</y>
-      <width>301</width>
+      <width>321</width>
       <height>51</height>
      </rect>
     </property>
@@ -104,7 +112,7 @@ padding: 5px;
      <rect>
       <x>20</x>
       <y>130</y>
-      <width>301</width>
+      <width>321</width>
       <height>51</height>
      </rect>
     </property>
@@ -115,17 +123,23 @@ padding: 5px;
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>10</y>
-      <width>81</width>
-      <height>91</height>
+      <x>140</x>
+      <y>20</y>
+      <width>71</width>
+      <height>81</height>
      </rect>
     </property>
     <property name="text">
      <string/>
     </property>
+    <property name="textFormat">
+     <enum>Qt::PlainText</enum>
+    </property>
     <property name="pixmap">
      <pixmap resource="res_1.qrc">:/image/89.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
     </property>
    </widget>
   </widget>
@@ -134,7 +148,7 @@ padding: 5px;
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>341</width>
+     <width>358</width>
      <height>23</height>
     </rect>
    </property>
