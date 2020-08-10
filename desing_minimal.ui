@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>311</width>
-    <height>218</height>
+    <width>341</width>
+    <height>362</height>
    </rect>
   </property>
   <property name="cursor">
@@ -46,8 +46,8 @@ border-radius: 12px;
 
 QPushButton{
 background-color: black;
-border: 1px solid black;
-border-radius: 15px;
+border: 1px #ebebeb;
+border-radius: 20px;
 display: flex;
 justify-content: center;
 background-color: #1c1c1c;
@@ -70,30 +70,14 @@ padding: 5px;
      </rect>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
-    <property name="geometry">
-     <rect>
-      <x>200</x>
-      <y>140</y>
-      <width>101</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Выход</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>140</y>
-      <width>101</width>
-      <height>30</height>
+      <x>90</x>
+      <y>270</y>
+      <width>171</width>
+      <height>41</height>
      </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true"/>
     </property>
     <property name="text">
      <string>Подключить</string>
@@ -102,9 +86,9 @@ padding: 5px;
    <widget class="QLineEdit" name="lineEdit_2">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>70</y>
-      <width>291</width>
+      <x>20</x>
+      <y>200</y>
+      <width>301</width>
       <height>51</height>
      </rect>
     </property>
@@ -118,14 +102,30 @@ padding: 5px;
    <widget class="QLineEdit" name="lineEdit">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>291</width>
+      <x>20</x>
+      <y>130</y>
+      <width>301</width>
       <height>51</height>
      </rect>
     </property>
     <property name="text">
      <string>Логин</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>10</y>
+      <width>81</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="res_1.qrc">:/image/89.png</pixmap>
     </property>
    </widget>
   </widget>
@@ -134,12 +134,21 @@ padding: 5px;
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>311</width>
+     <width>341</width>
      <height>23</height>
     </rect>
    </property>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QStatusBar" name="statusbar">
+   <property name="font">
+    <font>
+     <family>apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif</family>
+     <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+  </widget>
   <action name="action">
    <property name="text">
     <string>О программе</string>
@@ -151,6 +160,8 @@ padding: 5px;
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="res_1.qrc"/>
+ </resources>
  <connections/>
 </ui>
