@@ -48,8 +48,6 @@ QPushButton{
 background-color: black;
 border: 1px #ebebeb;
 border-radius: 20px;
-display: flex;
-justify-content: center;
 background-color: #1c1c1c;
 color: white;
 position: relative;
@@ -59,9 +57,8 @@ padding: 5px;
 QPushButton:hover{
 background-color: #2e2e2e;
 }
-
-QPushButton:a{
-background-color: white;
+QStatusBar{
+font-size: 12 px;
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
