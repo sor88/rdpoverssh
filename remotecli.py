@@ -12,6 +12,8 @@ class mywindow(QtWidgets.QMainWindow):
         super(mywindow, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        self.ui.lineEdit.selectionChanged.connect (self.ui.lineEdit.clear)
+        self.ui.lineEdit_2.selectionChanged.connect (self.ui.lineEdit_2.clear)
         self.ui.pushButton.clicked.connect(self.connectionstart)
         self.ui.statusbar.showMessage("Программа готова к работе")
         self.ui.pushButton_2.clicked.connect(QCoreApplication.instance().quit)
