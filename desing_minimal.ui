@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>338</width>
-    <height>248</height>
+    <width>341</width>
+    <height>362</height>
    </rect>
   </property>
   <property name="cursor">
@@ -46,8 +46,8 @@ border-radius: 12px;
 
 QPushButton{
 background-color: black;
-border: 1px solid black;
-border-radius: 15px;
+border: 1px #ebebeb;
+border-radius: 20px;
 display: flex;
 justify-content: center;
 background-color: #1c1c1c;
@@ -73,14 +73,11 @@ padding: 5px;
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>160</y>
-      <width>151</width>
-      <height>31</height>
+      <x>90</x>
+      <y>270</y>
+      <width>171</width>
+      <height>41</height>
      </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true"/>
     </property>
     <property name="text">
      <string>Подключить</string>
@@ -90,8 +87,8 @@ padding: 5px;
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>90</y>
-      <width>291</width>
+      <y>200</y>
+      <width>301</width>
       <height>51</height>
      </rect>
     </property>
@@ -106,13 +103,29 @@ padding: 5px;
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>20</y>
-      <width>291</width>
+      <y>130</y>
+      <width>301</width>
       <height>51</height>
      </rect>
     </property>
     <property name="text">
      <string>Логин</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>10</y>
+      <width>81</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="res_1.qrc">:/image/89.png</pixmap>
     </property>
    </widget>
   </widget>
@@ -121,7 +134,7 @@ padding: 5px;
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>338</width>
+     <width>341</width>
      <height>23</height>
     </rect>
    </property>
@@ -147,6 +160,8 @@ padding: 5px;
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="res_1.qrc"/>
+ </resources>
  <connections/>
 </ui>
