@@ -12,8 +12,6 @@ class mywindow(QtWidgets.QMainWindow):
         super(mywindow, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-    #    self.ui.lineEdit.setPlaceholderText("Логин")
-    #    self.ui.lineEdit_2.setPlaceholderText ("Пароль")
         self.ui.pushButton.clicked.connect(self.connectionstart)
         self.ui.statusbar.showMessage("Программа готова к работе")
 
@@ -28,11 +26,11 @@ class mywindow(QtWidgets.QMainWindow):
         potok.start()
         import sshconnect
         sshconnect.login = self.ui.lineEdit.text()
-        if sshconnect.login == '':
+        if sshconnect.login == '' or sshconnect.login is None:
             sshconnect.setstatus = "emptylogin"
             return
         sshconnect.password = self.ui.lineEdit_2.text()
-        if sshconnect.password == '':
+        if sshconnect.password == '' or sshconnect.login is None:
             sshconnect.setstatus = "emptypassword"
             return
         print(sshconnect.login)

@@ -16,15 +16,16 @@ class Ui_MainWindow(object):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(358, 391)
         MainWindow.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
+        MainWindow.setToolTipDuration(0)
         MainWindow.setStyleSheet("QMainWindow {\n"
 "}\n"
+"\n"
 "QWidget {\n"
 "/* цвета #fafafa; ededed;  */\n"
 "background: #ededed;\n"
 "font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif\n"
 "/* color: #ab9d00;   */\n"
 "}\n"
-"\n"
 ".QLineEdit::hover{\n"
 "background-color: #3d3d3d;\n"
 "}\n"
@@ -36,7 +37,6 @@ class Ui_MainWindow(object):
 "border: 0.1px solid #ebebeb;\n"
 "border-radius: 10px;\n"
 "/* color: #474747;  */\n"
-"\n"
 "}\n"
 "\n"
 "QPushButton{\n"
@@ -58,9 +58,8 @@ class Ui_MainWindow(object):
 "QStatusBar{\n"
 "font-family: FreeMono;\n"
 "font-size: 12px;\n"
-"}\n"
-"")
-        MainWindow.setDockOptions(QtWidgets.QMainWindow.AnimatedDocks)
+"}")
+        MainWindow.setAnimated(False)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setStyleSheet("")
         self.centralwidget.setObjectName("centralwidget")
@@ -76,7 +75,6 @@ class Ui_MainWindow(object):
         self.lineEdit.setGeometry(QtCore.QRect(20, 160, 321, 51))
         font = QtGui.QFont()
         font.setFamily("Avantgarde,TeX Gyre Adventor,URW Gothic L,sans-serif")
-        font.setPointSize(-1)
         font.setBold(False)
         font.setUnderline(False)
         font.setWeight(50)
@@ -103,7 +101,6 @@ class Ui_MainWindow(object):
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         font = QtGui.QFont()
         font.setFamily("FreeMono")
-        font.setPointSize(-1)
         font.setBold(False)
         font.setWeight(50)
         self.statusbar.setFont(font)
