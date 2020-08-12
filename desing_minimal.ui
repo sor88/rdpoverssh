@@ -16,16 +16,19 @@
   <property name="windowTitle">
    <string>RDP over SSH Client</string>
   </property>
+  <property name="toolTipDuration">
+   <number>0</number>
+  </property>
   <property name="styleSheet">
    <string notr="true">QMainWindow {
 }
+
 QWidget {
 /* цвета #fafafa; ededed;  */
 background: #ededed;
 font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif
 /* color: #ab9d00;   */
 }
-
 .QLineEdit::hover{
 background-color: #3d3d3d;
 }
@@ -37,7 +40,6 @@ background: #4f4f4f;
 border: 0.1px solid #ebebeb;
 border-radius: 10px;
 /* color: #474747;  */
-
 }
 
 QPushButton{
@@ -59,11 +61,10 @@ background-color: #2e2e2e;
 QStatusBar{
 font-family: FreeMono;
 font-size: 12px;
-}
-</string>
+}</string>
   </property>
-  <property name="dockOptions">
-   <set>QMainWindow::AnimatedDocks</set>
+  <property name="animated">
+   <bool>false</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
@@ -113,7 +114,6 @@ font-size: 12px;
     <property name="font">
      <font>
       <family>Avantgarde,TeX Gyre Adventor,URW Gothic L,sans-serif</family>
-      <pointsize>-1</pointsize>
       <weight>50</weight>
       <bold>false</bold>
       <underline>false</underline>
@@ -178,7 +178,6 @@ font-size: 12px;
    <property name="font">
     <font>
      <family>FreeMono</family>
-     <pointsize>-1</pointsize>
      <weight>50</weight>
      <bold>false</bold>
     </font>
