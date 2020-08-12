@@ -35,7 +35,7 @@ class mywindow(QtWidgets.QMainWindow):
             return
         print(sshconnect.login)
         self.ui.statusbar.showMessage("Подключение. Пожалуйста подождите...")
-        if sshconnect.login != "emptylogin" or sshconnect.local is not None and sshconnect.password != "emptypassword" or sshconnect.password is not None:
+        if sshconnect.login != "emptylogin" and sshconnect.password != "emptypassword":
             tun1 = threading.Thread(target=sshconnect.connecttopc, daemon=True)
             tun1.start()
 
