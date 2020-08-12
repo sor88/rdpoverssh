@@ -24,18 +24,29 @@ class mywindow(QtWidgets.QMainWindow):
         """
         potok = threading.Thread(target=self.writelabelstatus, daemon=True)
         potok.start()
-        import sshconnect
-        sshconnect.login = self.ui.lineEdit.text()
-        if sshconnect.login == '' or sshconnect.login is None:
-            sshconnect.setstatus = "emptylogin"
+       # import sshconnect
+
+        from sshconnect import setstatus
+        print(setstatus)
+        from sshconnect import publicipadress
+        if publicipadress[0] == "REMOTE_PUBLIC_IP":
+            self.ui.statusbar.showMessage("Не задан IP адрес сервера SSH")
             return
-        sshconnect.password = self.ui.lineEdit_2.text()
-        if sshconnect.password == '' or sshconnect.password is None:
-            sshconnect.setstatus = "emptypassword"
+        l = self.ui.lineEdit.text()
+        if l == '':
+            setstatus = "emptylogin"
             return
-        print(sshconnect.login)
+        p = self.ui.lineEdit_2.text()
+        if p == '':
+            setstatus = "emptypassword"
+            return
+     #   print(sshconnect.login)
+        print(setstatus)
         self.ui.statusbar.showMessage("Подключение. Пожалуйста подождите...")
-        if sshconnect.login != "emptylogin" and sshconnect.password != "emptypassword":
+        if l != "emptylogin" and p != "emptypassword":
+            import sshconnect
+            sshconnect.login = l
+            sshconnect.password = p
             tun1 = threading.Thread(target=sshconnect.connecttopc, daemon=True)
             tun1.start()
 
