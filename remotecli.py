@@ -30,7 +30,7 @@ class mywindow(QtWidgets.QMainWindow):
             sshconnect.setstatus = "emptylogin"
             return
         sshconnect.password = self.ui.lineEdit_2.text()
-        if sshconnect.password == '' or sshconnect.login is None:
+        if sshconnect.password == '' or sshconnect.password is None:
             sshconnect.setstatus = "emptypassword"
             return
         print(sshconnect.login)
