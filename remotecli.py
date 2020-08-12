@@ -35,8 +35,9 @@ class mywindow(QtWidgets.QMainWindow):
             return
         print(sshconnect.login)
         self.ui.statusbar.showMessage("Подключение. Пожалуйста подождите...")
-        tun1 = threading.Thread(target=sshconnect.connecttopc, daemon=True)
-        tun1.start()
+        if sshconnect.login != "emptylogin" or sshconnect.local is not None and sshconnect.password != "emptypassword" or sshconnect.password is not None:
+            tun1 = threading.Thread(target=sshconnect.connecttopc, daemon=True)
+            tun1.start()
 
     def writelabelstatus(self):
         """
@@ -46,7 +47,7 @@ class mywindow(QtWidgets.QMainWindow):
         while True:
             time.sleep(1)
             if sshconnect.setstatus == 'emptylogin':
-                self.ui.statusbar.showMessage("Поле: 'Фамилия' не заполнено")
+                self.ui.statusbar.showMessage("Поле: 'Логин' не заполнено")
                 time.sleep(3)
                 self.ui.statusbar.showMessage("Программа готова к работе")
                 break
