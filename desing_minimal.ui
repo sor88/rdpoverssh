@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>358</width>
-    <height>362</height>
+    <height>391</height>
    </rect>
   </property>
   <property name="cursor">
@@ -18,50 +18,49 @@
   </property>
   <property name="styleSheet">
    <string notr="true">QMainWindow {
-
 }
-
 QWidget {
-/* цвета #fafafa; ededed; */
-background-color: #ededed;
-font-family: apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;, Arial, sans-serif;
-color: #212529;
-font-weight: bold; 
-text-color: black;
+/* цвета #fafafa; ededed;  */
+background: #ededed;
+font-family: verdana, sans-serif;
+/* color: #ab9d00;   */
+font-weight: normal; 
 }
 
-QLabel {
-
+.QLineEdit::hover{
+background-color: #3d3d3d;
 }
-
 QLineEdit {
+color : #f0f0f0;
 padding: 0 10px 0 10px;
 font-size: 18px;
-font-weight: normal;
-background-color: #ffffff;
-border: 1px solid #ebebeb;
-border-radius: 12px;
-/* color: black; */
-}
+background: #4f4f4f;
+border: 0.1px solid #ebebeb;
+border-radius: 10px;
+/* color: #474747;  */
 
+}
 
 QPushButton{
 background-color: black;
+font-family: Ubuntu, verdana, sans-serif;
 border: 1px #ebebeb;
 border-radius: 20px;
 background-color: #1c1c1c;
 color: white;
 position: relative;
 padding: 5px;
+font-weight: bold; 
 }
 
-QPushButton:hover{
+.QPushButton:hover{
 background-color: #2e2e2e;
 }
 
 QStatusBar{
 font-size: 12 px;
-}</string>
+}
+</string>
   </property>
   <property name="dockOptions">
    <set>QMainWindow::AnimatedDocks</set>
@@ -70,21 +69,11 @@ font-size: 12 px;
    <property name="styleSheet">
     <string notr="true"/>
    </property>
-   <widget class="QWidget" name="widget" native="true">
-    <property name="geometry">
-     <rect>
-      <x>163</x>
-      <y>361</y>
-      <width>135</width>
-      <height>30</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
       <x>100</x>
-      <y>270</y>
+      <y>300</y>
       <width>171</width>
       <height>41</height>
      </rect>
@@ -97,7 +86,7 @@ font-size: 12 px;
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>200</y>
+      <y>230</y>
       <width>321</width>
       <height>51</height>
      </rect>
@@ -116,38 +105,49 @@ font-size: 12 px;
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>130</y>
+      <y>160</y>
       <width>321</width>
       <height>51</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif</family>
+      <family>verdana</family>
       <pointsize>-1</pointsize>
       <weight>50</weight>
       <bold>false</bold>
       <underline>false</underline>
      </font>
     </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
     <property name="styleSheet">
-     <string notr="true">
-</string>
+     <string notr="true"/>
     </property>
     <property name="text">
      <string/>
     </property>
+    <property name="cursorPosition">
+     <number>0</number>
+    </property>
+    <property name="dragEnabled">
+     <bool>false</bool>
+    </property>
     <property name="placeholderText">
      <string>Логин</string>
+    </property>
+    <property name="clearButtonEnabled">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>140</x>
+      <x>130</x>
       <y>20</y>
-      <width>71</width>
-      <height>91</height>
+      <width>91</width>
+      <height>111</height>
      </rect>
     </property>
     <property name="text">
@@ -170,17 +170,17 @@ font-size: 12 px;
      <x>0</x>
      <y>0</y>
      <width>358</width>
-     <height>23</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar">
    <property name="font">
     <font>
-     <family>apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif</family>
+     <family>verdana</family>
      <pointsize>12</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
+     <weight>50</weight>
+     <bold>false</bold>
     </font>
    </property>
   </widget>
