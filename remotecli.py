@@ -16,7 +16,6 @@ class mywindow(QtWidgets.QMainWindow):
     #    self.ui.lineEdit_2.setPlaceholderText ("Пароль")
         self.ui.pushButton.clicked.connect(self.connectionstart)
         self.ui.statusbar.showMessage("Программа готова к работе")
-        self.ui.pushButton_2.clicked.connect(QCoreApplication.instance().quit)
 
 
     def connectionstart(self):
