@@ -22,9 +22,8 @@
 QWidget {
 /* цвета #fafafa; ededed;  */
 background: #ededed;
-font-family: verdana, sans-serif;
+font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif
 /* color: #ab9d00;   */
-font-weight: normal; 
 }
 
 .QLineEdit::hover{
@@ -43,7 +42,7 @@ border-radius: 10px;
 
 QPushButton{
 background-color: black;
-font-family: Ubuntu, verdana, sans-serif;
+/* font-family: Ubuntu, verdana, sans-serif; */
 border: 1px #ebebeb;
 border-radius: 20px;
 background-color: #1c1c1c;
@@ -58,7 +57,8 @@ background-color: #2e2e2e;
 }
 
 QStatusBar{
-font-size: 12 px;
+font-family: FreeMono;
+font-size: 10px;
 }
 </string>
   </property>
@@ -112,7 +112,7 @@ font-size: 12 px;
     </property>
     <property name="font">
      <font>
-      <family>verdana</family>
+      <family>Avantgarde,TeX Gyre Adventor,URW Gothic L,sans-serif</family>
       <pointsize>-1</pointsize>
       <weight>50</weight>
       <bold>false</bold>
@@ -170,15 +170,15 @@ font-size: 12 px;
      <x>0</x>
      <y>0</y>
      <width>358</width>
-     <height>21</height>
+     <height>23</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar">
    <property name="font">
     <font>
-     <family>verdana</family>
-     <pointsize>12</pointsize>
+     <family>FreeMono</family>
+     <pointsize>-1</pointsize>
      <weight>50</weight>
      <bold>false</bold>
     </font>
