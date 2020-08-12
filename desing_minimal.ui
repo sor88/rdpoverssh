@@ -58,7 +58,7 @@ background-color: #2e2e2e;
 
 QStatusBar{
 font-family: FreeMono;
-font-size: 10px;
+font-size: 12px;
 }
 </string>
   </property>
