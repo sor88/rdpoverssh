@@ -9,55 +9,54 @@ publicipadress = ('REMOTE_PUBLIC_IP', 3232)  # Публичный IP адрес 
 setstatus = None
 login = None
 password = None
-lock = threading.Lock()
 
 def sshtunconnect(address):
     """
      Функция установки ssh соединения с найденным ip.
     """
-     server = open_tunnel(
+    server = open_tunnel(
          publicipadress,
          ssh_username="LOGIN_SSH",
          ssh_password="PASSWORD_SSH",
 #         ssh_pkey="srv.key", # можно использовать вместо пароля файл ключа
          remote_bind_address=address,
          local_bind_address=('localhost', 2222) #  адрес и порт откуда происходит проброс
-     )
-     server.start()
-     print(server.local_bind_port)
+    )
+    server.start()
+    print(server.local_bind_port)
 
              
 def sshtungetip():
     """
     Функция получения ip адреса из Kerio Control
     """
-      import kerio.kerio as kerio
-      import kerio.keriofunction as kf
-      from sshtunnel import SSHTunnelForwarder
-      funame = None
-      server = SSHTunnelForwarder(
+    import kerio.kerio as kerio
+    import kerio.keriofunction as kf
+    from sshtunnel import SSHTunnelForwarder
+    funame = None
+    server = SSHTunnelForwarder(
           publicipadress,
           ssh_username="LOGIN_SSH",
           ssh_password="PASSWORD_SSH!",
           remote_bind_address=('IP_Kerio_FIREWALL', 4081), # ip адрес и порт kerio control
           local_bind_address=('127.0.0.1', 4081)
-      )
-      server.start()
-      print(server.local_bind_port)
-      time.sleep(3)
-      global setstatus
-      setstatus = "Получение ip адреса"
-      print(setstatus)
-      session = kerio.callMethod("Session.login", {"userName": kerio.username, "password": kerio.password,"application": {"vendor": "Kerio", "name": "Control Api Demo", "version": "8.4.0"}})
-      token = session["result"]["token"]
-      for funame, fip in kf.findinfo_connection(token, login):
+    )
+    server.start()
+    print(server.local_bind_port)
+    time.sleep(3)
+    global setstatus
+    setstatus = "Получение ip адреса"
+    print(setstatus)
+    session = kerio.callMethod("Session.login", {"userName": kerio.username, "password": kerio.password,"application": {"vendor": "Kerio", "name": "Control Api Demo", "version": "8.4.0"}})
+    token = session["result"]["token"]
+    for funame, fip in kf.findinfo_connection(token, login):
           sleep(1)
-      kf.keriologout()
-      server.close()
-      if funame is None:
+    kf.keriologout()
+    server.close()
+    if funame is None:
             print("Имя пользователя не найдено среди активных подключений")
             fip = "IP не найден"
-      return(fip)
+    return(fip)
 
 
 def connecttopc():

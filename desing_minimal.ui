@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>341</width>
-    <height>362</height>
+    <width>358</width>
+    <height>391</height>
    </rect>
   </property>
   <property name="cursor">
@@ -16,65 +16,65 @@
   <property name="windowTitle">
    <string>RDP over SSH Client</string>
   </property>
+  <property name="toolTipDuration">
+   <number>0</number>
+  </property>
   <property name="styleSheet">
    <string notr="true">QMainWindow {
-
 }
 
 QWidget {
-background-color: #fafafa;
-font-family: apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;, Arial, sans-serif;
-color: #212529;
-font-weight: bold; 
-text-color: black;
+/* цвета #fafafa; ededed;  */
+background: #ededed;
+font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif
+/* color: #ab9d00;   */
 }
-
-QLabel {
-
+.QLineEdit::hover{
+background-color: #3d3d3d;
 }
-
 QLineEdit {
+color : #f0f0f0;
 padding: 0 10px 0 10px;
 font-size: 18px;
-font-weight: normal;
-background-color: #ffffff;
-box-shadow: 0 0 0 0; 
-border: 1px solid #ebebeb;
-border-radius: 12px;
-/* color: black; */
+background: #4f4f4f;
+border: 0.1px solid #ebebeb;
+border-radius: 10px;
+/* color: #474747;  */
 }
 
 QPushButton{
 background-color: black;
+/* font-family: Ubuntu, verdana, sans-serif; */
 border: 1px #ebebeb;
 border-radius: 20px;
-display: flex;
-justify-content: center;
 background-color: #1c1c1c;
 color: white;
 position: relative;
 padding: 5px;
+font-weight: bold; 
+}
+
+.QPushButton:hover{
+background-color: #2e2e2e;
+}
+
+QStatusBar{
+font-family: FreeMono;
+font-size: 12px;
 }</string>
+  </property>
+  <property name="animated">
+   <bool>false</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
     <string notr="true"/>
    </property>
-   <widget class="QWidget" name="widget" native="true">
-    <property name="geometry">
-     <rect>
-      <x>163</x>
-      <y>361</y>
-      <width>135</width>
-      <height>30</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>270</y>
+      <x>100</x>
+      <y>300</y>
       <width>171</width>
       <height>41</height>
      </rect>
@@ -87,45 +87,80 @@ padding: 5px;
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>200</y>
-      <width>301</width>
+      <y>230</y>
+      <width>321</width>
       <height>51</height>
      </rect>
     </property>
     <property name="text">
-     <string>пароль</string>
+     <string/>
     </property>
     <property name="echoMode">
      <enum>QLineEdit::Password</enum>
+    </property>
+    <property name="placeholderText">
+     <string>Пароль</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="lineEdit">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>130</y>
-      <width>301</width>
+      <y>160</y>
+      <width>321</width>
       <height>51</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Avantgarde,TeX Gyre Adventor,URW Gothic L,sans-serif</family>
+      <weight>50</weight>
+      <bold>false</bold>
+      <underline>false</underline>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
     <property name="text">
+     <string/>
+    </property>
+    <property name="cursorPosition">
+     <number>0</number>
+    </property>
+    <property name="dragEnabled">
+     <bool>false</bool>
+    </property>
+    <property name="placeholderText">
      <string>Логин</string>
+    </property>
+    <property name="clearButtonEnabled">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
       <x>130</x>
-      <y>10</y>
-      <width>81</width>
-      <height>91</height>
+      <y>20</y>
+      <width>91</width>
+      <height>111</height>
      </rect>
     </property>
     <property name="text">
      <string/>
     </property>
+    <property name="textFormat">
+     <enum>Qt::PlainText</enum>
+    </property>
     <property name="pixmap">
      <pixmap resource="res_1.qrc">:/image/89.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
     </property>
    </widget>
   </widget>
@@ -134,7 +169,7 @@ padding: 5px;
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>341</width>
+     <width>358</width>
      <height>23</height>
     </rect>
    </property>
@@ -142,10 +177,9 @@ padding: 5px;
   <widget class="QStatusBar" name="statusbar">
    <property name="font">
     <font>
-     <family>apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif</family>
-     <pointsize>12</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
+     <family>FreeMono</family>
+     <weight>50</weight>
+     <bold>false</bold>
     </font>
    </property>
   </widget>

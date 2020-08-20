@@ -14,7 +14,6 @@ class mywindow(QtWidgets.QMainWindow):
         self.ui.setupUi(self)
         self.ui.pushButton.clicked.connect(self.connectionstart)
         self.ui.statusbar.showMessage("Программа готова к работе")
-        self.ui.pushButton_2.clicked.connect(QCoreApplication.instance().quit)
 
 
     def connectionstart(self):
@@ -25,19 +24,31 @@ class mywindow(QtWidgets.QMainWindow):
         """
         potok = threading.Thread(target=self.writelabelstatus, daemon=True)
         potok.start()
-        import sshconnect
-        sshconnect.login = self.ui.lineEdit.text()
-        if sshconnect.login == '':
-            sshconnect.setstatus = "emptylogin"
+       # import sshconnect
+
+        from sshconnect import setstatus
+        print(setstatus)
+        from sshconnect import publicipadress
+        if publicipadress[0] == "REMOTE_PUBLIC_IP":
+            self.ui.statusbar.showMessage("Не задан IP адрес сервера SSH")
             return
-        sshconnect.password = self.ui.lineEdit_2.text()
-        if sshconnect.password == '':
-            sshconnect.setstatus = "emptypassword"
+        l = self.ui.lineEdit.text()
+        if l == '':
+            setstatus = "emptylogin"
             return
-        print(sshconnect.login)
+        p = self.ui.lineEdit_2.text()
+        if p == '':
+            setstatus = "emptypassword"
+            return
+     #   print(sshconnect.login)
+        print(setstatus)
         self.ui.statusbar.showMessage("Подключение. Пожалуйста подождите...")
-        tun1 = threading.Thread(target=sshconnect.connecttopc, daemon=True)
-        tun1.start()
+        if l != "emptylogin" and p != "emptypassword":
+            import sshconnect
+            sshconnect.login = l
+            sshconnect.password = p
+            tun1 = threading.Thread(target=sshconnect.connecttopc, daemon=True)
+            tun1.start()
 
     def writelabelstatus(self):
         """
@@ -47,7 +58,7 @@ class mywindow(QtWidgets.QMainWindow):
         while True:
             time.sleep(1)
             if sshconnect.setstatus == 'emptylogin':
-                self.ui.statusbar.showMessage("Поле: 'Фамилия' не заполнено")
+                self.ui.statusbar.showMessage("Поле: 'Логин' не заполнено")
                 time.sleep(3)
                 self.ui.statusbar.showMessage("Программа готова к работе")
                 break
