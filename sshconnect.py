@@ -28,34 +28,30 @@ def sshtunconnect(address):
              
 def sshtungetip():
     """
-    Функция получения ip адреса из Kerio Control
+    Функция получения ip адреса из файла или базы данных подготовленных на сервере API керио или вручную.
     """
-    import kerio.kerio as kerio
-    import kerio.keriofunction as kf
-    from sshtunnel import SSHTunnelForwarder
-    funame = None
-    server = SSHTunnelForwarder(
-          publicipadress,
-          ssh_username="LOGIN_SSH",
-          ssh_password="PASSWORD_SSH!",
-          remote_bind_address=('IP_Kerio_FIREWALL', 4081), # ip адрес и порт kerio control
-          local_bind_address=('127.0.0.1', 4081)
-    )
-    server.start()
-    print(server.local_bind_port)
+    from paramiko import SSHClient
+    from paramiko import AutoAddPolicy
+    getipsftp = SSHClient()
+    getipsftp.load_system_host_keys()
+    getipsftp.set_missing_host_key_policy(AutoAddPolicy())
+    getipsftp.connect('IP_SSH/SFTP_SERVER', 'PORT', 'Login', 'password')
+    sftp = getipsftp.open_sftp()
+    import os
+    file = sftp.file('ip-client.txt', 'r')
+    file = file.read().decode("utf-8")
+    getipsftp.close()
+    fip = None
+    for x in file.split("\n"):
+        if login in x:
+            a = x
+            fip = a.split()[0]
+    if fip == "Не" or fip is None:
+        fip = "IP не найден"
     time.sleep(3)
     global setstatus
     setstatus = "Получение ip адреса"
-    print(setstatus)
-    session = kerio.callMethod("Session.login", {"userName": kerio.username, "password": kerio.password,"application": {"vendor": "Kerio", "name": "Control Api Demo", "version": "8.4.0"}})
-    token = session["result"]["token"]
-    for funame, fip in kf.findinfo_connection(token, login):
-          sleep(1)
-    kf.keriologout()
-    server.close()
-    if funame is None:
-            print("Имя пользователя не найдено среди активных подключений")
-            fip = "IP не найден"
+    #print(setstatus)
     return(fip)
 
 
