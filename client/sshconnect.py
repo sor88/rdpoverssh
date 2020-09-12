@@ -2,9 +2,6 @@ from sshtunnel import open_tunnel
 from time import sleep
 import threading
 import time
-import ssl
-import sys
-import res
 
 publicipadress = ('Public_IP', PORT)  # Публичный IP адрес и порт ssh сервера
 setstatus = "ready"

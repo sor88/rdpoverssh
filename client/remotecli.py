@@ -1,6 +1,5 @@
-from PyQt5 import QtWidgets, uic
-from desing import Ui_MainWindow
-from PyQt5.QtCore import QCoreApplication
+from PyQt5 import QtWidgets
+from client.desing import Ui_MainWindow
 import sys
 import threading
 import time
@@ -21,7 +20,7 @@ class mywindow (QtWidgets.QMainWindow):
         """
         potok = threading.Thread (target=self.writelabelstatus, daemon=True)
         potok.start ()
-        import sshconnect
+        from client import sshconnect
         sshconnect.login = self.ui.lineEdit.text ()
         if sshconnect.login == '' or sshconnect.login is None:
             sshconnect.setstatus = "emptylogin"
@@ -41,7 +40,7 @@ class mywindow (QtWidgets.QMainWindow):
         """
         Функция выполняется следит за состоянием выполнения кода и изменяет сообщения в статус баре. Работает в отдельном потоке ( не блокирует основной поток, и форму приложения ).
         """
-        import sshconnect
+        from client import sshconnect
         while True:
             time.sleep (1)
             if sshconnect.setstatus == 'emptylogin':
