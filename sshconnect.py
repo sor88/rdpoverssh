@@ -42,20 +42,20 @@ def sshtungetip():
     pk = RSAKey.from_private_key_file ('srv.key')
     getipsftp.load_system_host_keys ()
     getipsftp.set_missing_host_key_policy (AutoAddPolicy ())
-    getipsftp.connect (hostname='Public_IP', port='sshport', username='sftp_login', pkey=pk)
-    sftp = getipsftp.open_sftp ()
+    getipsftp.connect(hostname='Public_IP', port='sshport', username='sftp_login', pkey=pk)
+    sftp = getipsftp.open_sftp()
     import json
     fip = None
-    with sftp.file ('ip-client.json', 'r') as f:
-        dataip = json.load (f)
-    getipsftp.close ()
+    with sftp.file('ip-client.json', 'r') as f:
+        dataip = json.load(f)
+    getipsftp.close()
     for x in dataip:
         if login == x["User"]["login"] or login in x["User"]["FullName"]:
             fip = x["User"]["ipaddress"]["ip"][0]
             fullname = x["User"]["login"]
     if fip == "Не найдено" or fip is None:
         fip = "IP не найден"
-    time.sleep (1)
+    time.sleep(1)
     return (fip)
 
 
@@ -68,17 +68,17 @@ def connecttopc():
     global setstatus
     if fip == "IP не найден":
         setstatus = "ipnotfound"
-        print (setstatus)
-        sleep (5)
+        print(setstatus)
+        sleep(5)
         setstatus = "ready"
         return
     if fip:
-        print ('Ip получен')
+        print('Ip получен')
         setstatus = "ip is found"
         address = (fip, 3389)
-        sshtunconnect (address)
+        sshtunconnect(address)
         rdpstart = threading.Thread (target=rdpdataconnection, daemon=True)
-        rdpstart.start ()
+        rdpstart.start()
 
 
 def rdpdataconnection():
@@ -87,15 +87,15 @@ def rdpdataconnection():
     """
     import subprocess
     global login, password
-    if len (login.split ()) > 0:
-        login = login.split ()[0]
-        print (login)
-    subprocess.call (
+    if len(login.split()) > 0:
+        login = login.split()[0]
+        print(login)
+    subprocess.call(
         f"cmdkey /add:localhost /user:ActiveDirectory_name\{login} /pass:{password}")  # Если пользователи не доменные DOMAIN\ убрать
-    time.sleep (3)
+    time.sleep(3)
     subprocess.call ("mstsc /v:localhost:2222")
-    time.sleep (15)
-    delkeyuser ()
+    time.sleep(15)
+    delkeyuser()
 
 
 def delkeyuser():
