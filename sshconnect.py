@@ -91,7 +91,7 @@ def rdpdataconnection():
         login = login.split()[0]
         print(login)
     subprocess.call(
-        f"cmdkey /add:localhost /user:ActiveDirectory_name\{login} /pass:{password}")  # Если пользователи не доменные DOMAIN\ убрать
+        f"cmdkey /add:localhost /user:DOMAIN\{login} /pass:{password}")  # Если пользователи не доменные DOMAIN\ убрать
     time.sleep(3)
     subprocess.call ("mstsc /v:localhost:2222")
     time.sleep(15)
