@@ -6,49 +6,36 @@ import threading
 import time
 
 
-class mywindow(QtWidgets.QMainWindow):
+class mywindow (QtWidgets.QMainWindow):
 
     def __init__(self):
-        super(mywindow, self).__init__()
-        self.ui = Ui_MainWindow()
-        self.ui.setupUi(self)
-        self.ui.pushButton.clicked.connect(self.connectionstart)
-        self.ui.statusbar.showMessage("Программа готова к работе")
-
+        super (mywindow, self).__init__ ()
+        self.ui = Ui_MainWindow ()
+        self.ui.setupUi (self)
+        self.ui.pushButton.clicked.connect (self.connectionstart)
+        self.ui.statusbar.showMessage ("Программа готова к работе")
 
     def connectionstart(self):
         """
-        Функция подключается к керио передает введенную фамилию в качестве аргумента для поиска пользователя и ip адреса
-        его компьютера в локальной сети. Далее kerio возвращает найденный ip адрес и передает в качестве аргумента для
-        проброса порта на второй тоннель
+        Функция подключается к серверу СУБД  и передает введенную фамилию в качестве аргумента для поиска пользователя и ip адреса.
         """
-        potok = threading.Thread(target=self.writelabelstatus, daemon=True)
-        potok.start()
-       # import sshconnect
-
-        from sshconnect import setstatus
-        print(setstatus)
-        from sshconnect import publicipadress
-        if publicipadress[0] == "REMOTE_PUBLIC_IP":
-            self.ui.statusbar.showMessage("Не задан IP адрес сервера SSH")
+        potok = threading.Thread (target=self.writelabelstatus, daemon=True)
+        potok.start ()
+        import sshconnect
+        sshconnect.login = self.ui.lineEdit.text ()
+        if sshconnect.login == '' or sshconnect.login is None:
+            sshconnect.setstatus = "emptylogin"
             return
-        l = self.ui.lineEdit.text()
-        if l == '':
-            setstatus = "emptylogin"
+        sshconnect.password = self.ui.lineEdit_2.text ()
+        if sshconnect.password == '' or sshconnect.password is None:
+            sshconnect.setstatus = "emptypassword"
             return
-        p = self.ui.lineEdit_2.text()
-        if p == '':
-            setstatus = "emptypassword"
-            return
-     #   print(sshconnect.login)
-        print(setstatus)
-        self.ui.statusbar.showMessage("Подключение. Пожалуйста подождите...")
-        if l != "emptylogin" and p != "emptypassword":
-            import sshconnect
-            sshconnect.login = l
-            sshconnect.password = p
-            tun1 = threading.Thread(target=sshconnect.connecttopc, daemon=True)
-            tun1.start()
+        if sshconnect.login != "emptylogin" or sshconnect.local is not None and sshconnect.password != "emptypassword" or sshconnect.password is not None:
+            if sshconnect.setstatus == "ready":
+                tun1 = threading.Thread (target=sshconnect.connecttopc, daemon=True)
+                sshconnect.setstatus == "connect"
+                self.ui.statusbar.showMessage ("Подключение. Пожалуйста подождите...")
+                tun1.start ()
 
     def writelabelstatus(self):
         """
@@ -56,31 +43,42 @@ class mywindow(QtWidgets.QMainWindow):
         """
         import sshconnect
         while True:
-            time.sleep(1)
+            time.sleep (1)
             if sshconnect.setstatus == 'emptylogin':
-                self.ui.statusbar.showMessage("Поле: 'Логин' не заполнено")
-                time.sleep(3)
-                self.ui.statusbar.showMessage("Программа готова к работе")
+                self.ui.statusbar.showMessage ("Поле: 'Логин' не заполнено")
+                time.sleep (3)
+                self.ui.statusbar.showMessage ("Программа готова к работе")
+                sshconnect.setstatus = "ready"
                 break
             if sshconnect.setstatus == 'emptypassword':
-                self.ui.statusbar.showMessage("Поле: 'Пароль' не заполнено")
-                time.sleep(3)
-                self.ui.statusbar.showMessage("Программа готова к работе")
+                self.ui.statusbar.showMessage ("Поле: 'Пароль' не заполнено")
+                time.sleep (3)
+                self.ui.statusbar.showMessage ("Программа готова к работе")
+                sshconnect.setstatus = "ready"
                 break
             if sshconnect.setstatus == "ip is found":
-                self.ui.statusbar.showMessage('IP найден. Выполняется подключение.')
-                time.sleep(10)
-                self.ui.statusbar.clearMessage()
+                self.ui.statusbar.showMessage ('IP найден. Выполняется подключение.')
+                time.sleep (10)
+                self.ui.statusbar.clearMessage ()
+                self.ui.statusbar.showMessage ("Программа готова к работе")
+                sshconnect.setstatus = "ready"
                 break
-            if sshconnect.setstatus == "IP не найден":
-                self.ui.statusbar.showMessage(sshconnect.setstatus)
+            if sshconnect.setstatus == "ipnotfound":
+                self.ui.statusbar.showMessage ('IP не найден. Обратитесь к администратору.')
+                time.sleep (3)
+                self.ui.lineEdit.clear ()
+                self.ui.lineEdit_2.clear ()
+                self.ui.statusbar.showMessage ("Программа готова к работе")
+                sshconnect.setstatus = "ready"
                 break
-            
+            if sshconnect.setstatus == "Получение ip адреса":
+                self.ui.statusbar.showMessage (sshconnect.setstatus)
+
     def vihod(self):
         """
         Выход
         """
-        sys.exit()
+        sys.exit ()
 
     def update(self):
         """
@@ -89,7 +87,7 @@ class mywindow(QtWidgets.QMainWindow):
         pass
 
 
-app = QtWidgets.QApplication([])
-application = mywindow()
-application.show()
+app = QtWidgets.QApplication ([])
+application = mywindow ()
+application.show ()
 sys.exit (app.exec ())
