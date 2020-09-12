@@ -21,7 +21,7 @@
 2.4  После успешного подключения учетные данные удаляются.<br>
 <br>    
 
-![Alt-текст](https://github.com/sor88/rdpoverssh/blob/master/map.png?raw=true)
+![Alt-текст](https://github.com/sor88/rdpoverssh/blob/develop/image/map.png?raw=true)
 
 <br>
 
