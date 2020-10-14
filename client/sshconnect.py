@@ -3,7 +3,7 @@ from time import sleep
 import threading
 import time
 
-publicipadress = ('Public_IP', PORT)  # Публичный IP адрес и порт ssh сервера
+publicipadress=('Public_IP', PORT)  # Публичный IP адрес и порт ssh сервера
 setstatus = "ready"
 login = None
 password = None
@@ -21,8 +21,8 @@ def sshtunconnect(address):
         remote_bind_address=address,
         local_bind_address=('localhost', 2222)  # адрес и порт куда происходит проброс
     )
-    server.start ()
-    print (server.local_bind_port)
+    server.start()
+    print(server.local_bind_port)
 
 
 def sshtungetip():
@@ -35,11 +35,11 @@ def sshtungetip():
     from paramiko import SSHClient
     from paramiko import AutoAddPolicy
     from paramiko import RSAKey
-    getipsftp = SSHClient ()
-    pk = RSAKey.from_private_key_file ('srv.key')
-    getipsftp.load_system_host_keys ()
-    getipsftp.set_missing_host_key_policy (AutoAddPolicy ())
-    getipsftp.connect(hostname='Public_IP', port='sshport', username='sftp_login', pkey=pk)
+    getipsftp = SSHClient()
+    pk = RSAKey.from_private_key_file('srv.key')
+    getipsftp.load_system_host_keys()
+    getipsftp.set_missing_host_key_policy(AutoAddPolicy())
+    getipsftp.connect(hostname=publicipadress[0], port=str(publicipadress[1]), username='sftp', pkey=pk)
     sftp = getipsftp.open_sftp()
     import json
     fip = None
@@ -53,15 +53,15 @@ def sshtungetip():
     if fip == "Не найдено" or fip is None:
         fip = "IP не найден"
     time.sleep(1)
-    return (fip)
+    return(fip)
 
 
 def connecttopc():
     """
     Основная управляющая функция. получает ip и запускает функцию соединения.
     """
-    fip = sshtungetip ()
-    print (fip)
+    fip = sshtungetip()
+    print(fip)
     global setstatus
     if fip == "IP не найден":
         setstatus = "ipnotfound"
@@ -74,7 +74,7 @@ def connecttopc():
         setstatus = "ip is found"
         address = (fip, 3389)
         sshtunconnect(address)
-        rdpstart = threading.Thread (target=rdpdataconnection, daemon=True)
+        rdpstart = threading.Thread(target=rdpdataconnection, daemon=True)
         rdpstart.start()
 
 
@@ -97,6 +97,6 @@ def rdpdataconnection():
 
 def delkeyuser():
     import subprocess
-    subprocess.call ("cmdkey /delete localhost")
+    subprocess.call("cmdkey /delete localhost")
 
 
