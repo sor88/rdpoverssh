@@ -8,18 +8,18 @@ import time
 class mywindow (QtWidgets.QMainWindow):
 
     def __init__(self):
-        super (mywindow, self).__init__ ()
-        self.ui = Ui_MainWindow ()
-        self.ui.setupUi (self)
-        self.ui.pushButton.clicked.connect (self.connectionstart)
-        self.ui.statusbar.showMessage ("Программа готова к работе")
+        super (mywindow, self).__init__()
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(self)
+        self.ui.pushButton.clicked.connect(self.connectionstart)
+        self.ui.statusbar.showMessage("Программа готова к работе")
 
     def connectionstart(self):
         """
         Функция запускает в отдельном потоке функцию мониторинга состояния программы, для отображения его (состояния)
         в статус баре. Функция Проверяет заполненность полей Логина и пароля. Если одно из полей пустое, происходит
-        возврат. Программа останавливается. Подключается к серверу СУБД или к серверу с файлом JSON и передает
-        введенную фамилию в качестве параметра для поиска ip адреса.
+        возврат. Программа останавливается. Если все поля заполнены и статус программы " Программа готова к работе"
+        происходит вызов фунции.
         """
         potok = threading.Thread(target=self.writelabelstatus, daemon=True)
         potok.start()
@@ -75,6 +75,9 @@ class mywindow (QtWidgets.QMainWindow):
                 self.ui.statusbar.showMessage(sshconnect.setstatus)
 
     def starttun(self):
+        """
+        Функция вызывает функцию функцию установки ssh сессии в отдельном потоке.
+        """
         import sshconnect
         tun1 = threading.Thread(target=sshconnect.connecttopc, daemon=True)
         sshconnect.setstatus == "connect"

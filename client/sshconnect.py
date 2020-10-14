@@ -11,9 +11,10 @@ password = None
 
 def sshtunconnect(address):
     """
-     Функция установки ssh соединения с найденным ip.
+     Устанавливает соединение с пробросом порта по заданному IP адресу ( который был найден из JSON объекта) ранее и
+     передан в функцию в качестве параметра.
     """
-    server = open_tunnel (
+    server = open_tunnel(
         publicipadress,
         ssh_username="ssh_login",
         #       ssh_password="password",
@@ -27,7 +28,8 @@ def sshtunconnect(address):
 
 def sshtungetip():
     """
-    Функция получения ip адреса из СУБД (JSON)
+   Подключается по sftp к серверу получает данные JSON. Осуществляет поиск IP и возращает его в качестве параметра в
+   место вызова.
     """
     global setstatus
     global login
@@ -58,7 +60,9 @@ def sshtungetip():
 
 def connecttopc():
     """
-    Основная управляющая функция. получает ip и запускает функцию соединения.
+    Основная управляющая функция. получает ip  из функции sshtungetip. Проверяет IP по заданной маске. Если IP не найден
+    передает в статус бар сообщение о том что IP не найден. Если IP найден вызывает функцию ssh соединения функцию
+    соединения.
     """
     fip = sshtungetip()
     print(fip)
