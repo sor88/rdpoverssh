@@ -122,4 +122,3 @@ class Ui_MainWindow(object):
         self.lineEdit.setPlaceholderText(_translate("MainWindow", "Логин"))
         self.action.setText(_translate("MainWindow", "О программе"))
         self.action_2.setText(_translate("MainWindow", "Помощь"))
-import res
