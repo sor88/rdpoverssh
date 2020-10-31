@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'desing_minimal.ui'
+# Form implementation generated from reading ui file 'desing/проба.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.0
 #
@@ -14,111 +14,200 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(358, 391)
-        MainWindow.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
-        MainWindow.setToolTipDuration(0)
-        MainWindow.setStyleSheet("QMainWindow {\n"
-"}\n"
-"\n"
-"QWidget {\n"
-"/* цвета #fafafa; ededed;  */\n"
-"background: #ededed;\n"
-"font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif\n"
-"/* color: #ab9d00;   */\n"
-"}\n"
-".QLineEdit::hover{\n"
-"background-color: #3d3d3d;\n"
-"}\n"
-"QLineEdit {\n"
-"color : #f0f0f0;\n"
-"padding: 0 10px 0 10px;\n"
-"font-size: 18px;\n"
-"background: #4f4f4f;\n"
-"border: 0.1px solid #ebebeb;\n"
-"border-radius: 10px;\n"
-"/* color: #474747;  */\n"
-"}\n"
-"\n"
-"QPushButton{\n"
-"background-color: black;\n"
-"/* font-family: Ubuntu, verdana, sans-serif; */\n"
-"border: 1px #ebebeb;\n"
-"border-radius: 20px;\n"
-"background-color: #1c1c1c;\n"
-"color: white;\n"
-"position: relative;\n"
-"padding: 5px;\n"
-"font-weight: bold; \n"
-"}\n"
-"\n"
-".QPushButton:hover{\n"
-"background-color: #2e2e2e;\n"
-"}\n"
-"\n"
-"QStatusBar{\n"
-"font-family: FreeMono;\n"
-"font-size: 12px;\n"
-"}")
-        MainWindow.setAnimated(False)
+        MainWindow.resize(324, 294)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setStyleSheet("")
+        self.centralwidget.setStyleSheet("background-color: #22222e")
         self.centralwidget.setObjectName("centralwidget")
-        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton.setGeometry(QtCore.QRect(100, 300, 171, 41))
-        self.pushButton.setObjectName("pushButton")
-        self.lineEdit_2 = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit_2.setGeometry(QtCore.QRect(20, 230, 321, 51))
-        self.lineEdit_2.setText("")
-        self.lineEdit_2.setEchoMode(QtWidgets.QLineEdit.Password)
-        self.lineEdit_2.setObjectName("lineEdit_2")
         self.lineEdit = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit.setGeometry(QtCore.QRect(20, 160, 321, 51))
+        self.lineEdit.setGeometry(QtCore.QRect(10, 90, 301, 41))
+        palette = QtGui.QPalette()
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(34, 34, 46))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(34, 34, 46))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(34, 34, 46))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Window, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 105, 91))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.PlaceholderText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(34, 34, 46))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(34, 34, 46))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(34, 34, 46))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Window, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 105, 91))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.PlaceholderText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(34, 34, 46))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(34, 34, 46))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(34, 34, 46))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Window, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 105, 91))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.PlaceholderText, brush)
+        self.lineEdit.setPalette(palette)
         font = QtGui.QFont()
-        font.setFamily("Avantgarde,TeX Gyre Adventor,URW Gothic L,sans-serif")
-        font.setBold(False)
-        font.setUnderline(False)
-        font.setWeight(50)
+        font.setFamily("MathJax_Size4")
+        font.setPointSize(12)
         self.lineEdit.setFont(font)
-        self.lineEdit.setAutoFillBackground(False)
-        self.lineEdit.setStyleSheet("")
-        self.lineEdit.setText("")
-        self.lineEdit.setCursorPosition(0)
-        self.lineEdit.setDragEnabled(False)
-        self.lineEdit.setClearButtonEnabled(False)
+        self.lineEdit.setStyleSheet("background-color: #22222e;\n"
+"border: 2px solid #f66867;\n"
+"border-radius: 20px;\n"
+"color: white;")
+        self.lineEdit.setAlignment(QtCore.Qt.AlignCenter)
         self.lineEdit.setObjectName("lineEdit")
-        self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(130, 20, 91, 111))
-        self.label.setText("")
-        self.label.setTextFormat(QtCore.Qt.PlainText)
-        self.label.setPixmap(QtGui.QPixmap(":/image/89.png"))
-        self.label.setScaledContents(True)
-        self.label.setObjectName("label")
-        MainWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 358, 23))
-        self.menubar.setObjectName("menubar")
-        MainWindow.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        self.lineEdit_2 = QtWidgets.QLineEdit(self.centralwidget)
+        self.lineEdit_2.setGeometry(QtCore.QRect(10, 150, 301, 41))
+        palette = QtGui.QPalette()
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(34, 34, 46))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(34, 34, 46))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(34, 34, 46))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Window, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 105, 91))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.PlaceholderText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(34, 34, 46))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(34, 34, 46))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(34, 34, 46))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Window, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 105, 91))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.PlaceholderText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.WindowText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(34, 34, 46))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Text, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(34, 34, 46))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Base, brush)
+        brush = QtGui.QBrush(QtGui.QColor(34, 34, 46))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Window, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 105, 91))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.PlaceholderText, brush)
+        self.lineEdit_2.setPalette(palette)
         font = QtGui.QFont()
-        font.setFamily("FreeMono")
-        font.setBold(False)
-        font.setWeight(50)
-        self.statusbar.setFont(font)
-        self.statusbar.setObjectName("statusbar")
-        MainWindow.setStatusBar(self.statusbar)
-        self.action = QtWidgets.QAction(MainWindow)
-        self.action.setObjectName("action")
-        self.action_2 = QtWidgets.QAction(MainWindow)
-        self.action_2.setObjectName("action_2")
+        font.setFamily("MathJax_Size4")
+        font.setPointSize(12)
+        self.lineEdit_2.setFont(font)
+        self.lineEdit_2.setStyleSheet("background-color: #22222e;\n"
+"border: 2px solid #f66867;\n"
+"border-radius: 20px;\n"
+"color: white;")
+        self.lineEdit_2.setEchoMode(QtWidgets.QLineEdit.Password)
+        self.lineEdit_2.setAlignment(QtCore.Qt.AlignCenter)
+        self.lineEdit_2.setObjectName("lineEdit_2")
+        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton.setGeometry(QtCore.QRect(10, 230, 301, 41))
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        self.pushButton.setFont(font)
+        self.pushButton.setStyleSheet("QPushButton{\n"
+"background-color: #22222e;\n"
+"border: 2px solid #8db600;\n"
+"border-radius: 20px;\n"
+"color: #8db600;\n"
+"}\n"
+"QPushButton:hover {\n"
+"background-color: #8db600;\n"
+"color: #22222e;\n"
+"\n"
+"}")
+        self.pushButton.setObjectName("pushButton")
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label.setGeometry(QtCore.QRect(290, 10, 31, 31))
+        self.label.setText("")
+        self.label.setPixmap(QtGui.QPixmap(":/settings/w512h5121380376547MetroUIConfigure.png"))
+        self.label.setObjectName("label")
+        self.checkBox = QtWidgets.QCheckBox(self.centralwidget)
+        self.checkBox.setGeometry(QtCore.QRect(30, 10, 241, 23))
+        self.checkBox.setObjectName("checkBox")
+        MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "RDP over SSH Client"))
-        self.pushButton.setText(_translate("MainWindow", "Подключить"))
-        self.lineEdit_2.setPlaceholderText(_translate("MainWindow", "Пароль"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.lineEdit.setPlaceholderText(_translate("MainWindow", "Логин"))
-        self.action.setText(_translate("MainWindow", "О программе"))
-        self.action_2.setText(_translate("MainWindow", "Помощь"))
+        self.lineEdit_2.setPlaceholderText(_translate("MainWindow", "Пароль"))
+        self.pushButton.setText(_translate("MainWindow", "Подключиться"))
+        self.checkBox.setText(_translate("MainWindow", "Не использовать авторизацию"))
+
