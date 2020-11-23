@@ -1,0 +1,9 @@
+[
+  {
+    "settings": {
+      "ssh_server_ip": "90.150.80.113",
+      "ssh_port": "65224",
+      "ssh_login": "itu"
+    }
+  }
+]

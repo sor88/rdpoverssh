@@ -2,12 +2,15 @@ from sshtunnel import open_tunnel
 from time import sleep
 import threading
 import time
+import json
 
-publicipadress=('Public_IP', PORT)  # Публичный IP адрес и порт ssh сервера
 setstatus = "ready"
 login = None
 password = None
+readedsettings = None
 
+print(readedsettings)
+publicipadress = None
 
 def sshtunconnect(address):
     """
@@ -16,7 +19,7 @@ def sshtunconnect(address):
     """
     server = open_tunnel(
         publicipadress,
-        ssh_username="ssh_login",
+        ssh_username=readed_settings_from_file[2],
         #       ssh_password="password",
         ssh_pkey="srv.key",  # можно использовать вместо пароля файл ключа
         remote_bind_address=address,
@@ -43,7 +46,6 @@ def sshtungetip():
     getipsftp.set_missing_host_key_policy(AutoAddPolicy())
     getipsftp.connect(hostname=publicipadress[0], port=str(publicipadress[1]), username='sftp', pkey=pk)
     sftp = getipsftp.open_sftp()
-    import json
     fip = None
     with sftp.file('ip-client.json', 'r') as f:
         dataip = json.load(f)
