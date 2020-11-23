@@ -1,5 +1,5 @@
 from PyQt5 import QtWidgets
-from client.desing import Ui_MainWindow
+from first_form import Ui_MainWindow
 import sys
 import threading
 import time
@@ -12,7 +12,7 @@ class mywindow (QtWidgets.QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.ui.pushButton.clicked.connect(self.connectionstart)
-        self.ui.statusbar.showMessage("Программа готова к работе")
+        self.ui.statusBar.showMessage("Программа готова к работе")
 
     def connectionstart(self):
         """
@@ -23,7 +23,7 @@ class mywindow (QtWidgets.QMainWindow):
         """
         potok = threading.Thread(target=self.writelabelstatus, daemon=True)
         potok.start()
-        from client import sshconnect
+        import sshconnect
         sshconnect.login = self.ui.lineEdit.text ()
         if sshconnect.login == '' or sshconnect.login is None:
             sshconnect.setstatus = "emptylogin"

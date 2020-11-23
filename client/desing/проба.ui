@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>324</width>
-    <height>294</height>
+    <height>316</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -535,6 +535,7 @@ color: #22222e;
     </property>
    </widget>
   </widget>
+  <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <resources>
   <include location="main.qrc"/>
