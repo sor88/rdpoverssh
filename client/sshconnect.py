@@ -3,11 +3,10 @@ from time import sleep
 import threading
 import time
 import json
-
 setstatus = "ready"
 login = None
 password = None
-
+readsettings = None
 def read_settings():
     """
     Функция чтения настроек из файла settings.json. При его наличие берутся параметры IP и Port ssh сервера по-умолчанию
@@ -21,9 +20,9 @@ def read_settings():
         ip_port = x["settings"]["ssh_port"]
         ssh_login = x["settings"]["ssh_login"]
     print(ip_server, ip_port, ssh_login)
+    global readsettings
     readsettings = (ip_server, int(ip_port), ssh_login)
     return(readsettings)
-
 
 readsettings = read_settings()
 print(readsettings)

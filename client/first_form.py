@@ -14,7 +14,9 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(324, 316)
+        MainWindow.resize(316, 324)
+        MainWindow.setMinimumSize(QtCore.QSize(316, 324))
+        MainWindow.setMaximumSize(QtCore.QSize(316, 324))
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setStyleSheet("background-color: #22222e")
         self.centralwidget.setObjectName("centralwidget")
@@ -190,14 +192,14 @@ class Ui_MainWindow(object):
 "\n"
 "}")
         self.pushButton.setObjectName("pushButton")
-        self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(290, 10, 31, 31))
-        self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap(":/settings/w512h5121380376547MetroUIConfigure.png"))
-        self.label.setObjectName("label")
         self.checkBox = QtWidgets.QCheckBox(self.centralwidget)
-        self.checkBox.setGeometry(QtCore.QRect(30, 10, 241, 23))
+        self.checkBox.setGeometry(QtCore.QRect(10, 10, 241, 23))
         self.checkBox.setObjectName("checkBox")
+        self.label_3 = QtWidgets.QLabel(self.centralwidget)
+        self.label_3.setGeometry(QtCore.QRect(260, 10, 51, 51))
+        self.label_3.setText("")
+        self.label_3.setPixmap(QtGui.QPixmap(":/res/image/st.png"))
+        self.label_3.setObjectName("label_3")
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusBar = QtWidgets.QStatusBar(MainWindow)
         self.statusBar.setObjectName("statusBar")
@@ -213,4 +215,4 @@ class Ui_MainWindow(object):
         self.lineEdit_2.setPlaceholderText(_translate("MainWindow", "Пароль"))
         self.pushButton.setText(_translate("MainWindow", "Подключиться"))
         self.checkBox.setText(_translate("MainWindow", "Не использовать авторизацию"))
-import main_rc
+import resources

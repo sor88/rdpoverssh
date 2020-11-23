@@ -3,7 +3,7 @@ from first_form import Ui_MainWindow
 import sys
 import threading
 import time
-
+import sshconnect
 
 class mywindow (QtWidgets.QMainWindow):
 
@@ -12,6 +12,7 @@ class mywindow (QtWidgets.QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.ui.pushButton.clicked.connect(self.connectionstart)
+        sshconnect.read_settings()
         self.ui.statusBar.showMessage("Программа готова к работе")
 
     def connectionstart(self):
@@ -23,7 +24,7 @@ class mywindow (QtWidgets.QMainWindow):
         """
         potok = threading.Thread(target=self.writelabelstatus, daemon=True)
         potok.start()
-        import sshconnect
+      #  import sshconnect
         sshconnect.login = self.ui.lineEdit.text ()
         if sshconnect.login == '' or sshconnect.login is None:
             sshconnect.setstatus = "emptylogin"
@@ -41,7 +42,7 @@ class mywindow (QtWidgets.QMainWindow):
         Функция следит за состоянием выполнения кода и отображает в статус баре статус состояния программы. Работает в
         отдельном потоке ( не блокирует основной поток, форму приложения ).
         """
-        import sshconnect
+      #  import sshconnect
         while True:
             time.sleep(1)
             if sshconnect.setstatus == 'emptylogin':
@@ -79,7 +80,7 @@ class mywindow (QtWidgets.QMainWindow):
         """
         Функция вызывает функцию функцию установки ssh сессии в отдельном потоке.
         """
-        import sshconnect
+    #    import sshconnect
         tun1 = threading.Thread(target=sshconnect.connecttopc, daemon=True)
         sshconnect.setstatus == "connect"
         self.ui.statusBar.showMessage("Подключение. Пожалуйста подождите...")
