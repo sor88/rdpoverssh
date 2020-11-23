@@ -7,10 +7,27 @@ import json
 setstatus = "ready"
 login = None
 password = None
-readedsettings = None
 
-print(readedsettings)
-publicipadress = None
+def read_settings():
+    """
+    Функция чтения настроек из файла settings.json. При его наличие берутся параметры IP и Port ssh сервера по-умолчанию
+    Если настройки указаны в форме программы, параметры settings.json игнорируются.
+    """
+    with open("settings.json", "r") as f:
+        import json
+        tmp = json.load(f)
+    for x in tmp:
+        ip_server = x["settings"]["ssh_server_ip"]
+        ip_port = x["settings"]["ssh_port"]
+        ssh_login = x["settings"]["ssh_login"]
+    print(ip_server, ip_port, ssh_login)
+    readsettings = (ip_server, int(ip_port), ssh_login)
+    return(readsettings)
+
+
+readsettings = read_settings()
+print(readsettings)
+publicipadress = (readsettings[0], readsettings[1])
 
 def sshtunconnect(address):
     """
@@ -19,7 +36,7 @@ def sshtunconnect(address):
     """
     server = open_tunnel(
         publicipadress,
-        ssh_username=readed_settings_from_file[2],
+        ssh_username=readsettings[2],
         #       ssh_password="password",
         ssh_pkey="srv.key",  # можно использовать вместо пароля файл ключа
         remote_bind_address=address,

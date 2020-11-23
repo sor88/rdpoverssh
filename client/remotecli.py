@@ -5,9 +5,6 @@ import threading
 import time
 
 
-
-
-
 class mywindow (QtWidgets.QMainWindow):
 
     def __init__(self):
@@ -16,25 +13,6 @@ class mywindow (QtWidgets.QMainWindow):
         self.ui.setupUi(self)
         self.ui.pushButton.clicked.connect(self.connectionstart)
         self.ui.statusBar.showMessage("Программа готова к работе")
-        self.read_settings()
-
-    def read_settings(self):
-        """
-        Функция чтения настроек из файла settings.json. При его наличие берутся параметры IP и Port ssh сервера по-умолчанию
-        Если настройки указаны в форме программы, параметры settings.json игнорируются.
-        """
-
-        with open("settings.json", "r") as f:
-            import json
-            tmp = json.load(f)
-        for x in tmp:
-            ip_server = x["settings"]["ssh_server_ip"]
-            ip_port = x["settings"]["ssh_port"]
-            ssh_login = x["settings"]["ssh_login"]
-        print(ip_server, ip_port, ssh_login)
-        sshconnect.readedsettings = (ip_server, int(ip_port), ssh_login)
-
-
 
     def connectionstart(self):
         """
