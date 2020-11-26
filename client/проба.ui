@@ -521,8 +521,8 @@ color: #22222e;
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>10</y>
-      <width>241</width>
+      <y>20</y>
+      <width>231</width>
       <height>23</height>
      </rect>
     </property>
@@ -530,44 +530,38 @@ color: #22222e;
      <string>Не использовать авторизацию</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_3">
+   <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>250</x>
+      <x>260</x>
       <y>10</y>
-      <width>51</width>
-      <height>51</height>
+      <width>41</width>
+      <height>41</height>
      </rect>
     </property>
-    <property name="minimumSize">
-     <size>
-      <width>51</width>
-      <height>51</height>
-     </size>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>51</width>
-      <height>51</height>
-     </size>
-    </property>
-    <property name="sizeIncrement">
-     <size>
-      <width>51</width>
-      <height>51</height>
-     </size>
-    </property>
-    <property name="baseSize">
-     <size>
-      <width>51</width>
-      <height>51</height>
-     </size>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+background-color: #00acdc;
+border: 1px solid;
+border-radius: 10px;
+}
+QLabel:hover{
+background-color: #00acdc;
+border: 2px solid #00617c;
+border-radius: 10px;
+}</string>
     </property>
     <property name="text">
      <string/>
     </property>
     <property name="pixmap">
      <pixmap resource="resources.qrc">:/res/image/st.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
     </property>
    </widget>
   </widget>

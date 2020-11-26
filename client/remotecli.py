@@ -1,5 +1,6 @@
 from PyQt5 import QtWidgets
 from first_form import Ui_MainWindow
+from secondform import Ui_Form
 import sys
 import threading
 import time
@@ -14,6 +15,7 @@ class mywindow (QtWidgets.QMainWindow):
         self.ui.pushButton.clicked.connect(self.connectionstart)
         sshconnect.read_settings()
         self.ui.statusBar.showMessage("Программа готова к работе")
+  #      self.ui.label_2.clicked.connect(secondform.Ui_Form)
 
     def connectionstart(self):
         """

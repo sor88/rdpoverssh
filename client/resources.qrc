@@ -1,6 +1,9 @@
 <RCC>
   <qresource prefix="res">
+    <file>image/126472.png</file>
+    <file>image/Settings-icon.png</file>
+    <file>image/setting2.png</file>
+    <file>image/ipod-touch-computer-icons-ios-10-ios-7-ios-thumbnail.jpg</file>
     <file>image/st.png</file>
-    <file>image/89.png</file>
   </qresource>
 </RCC>
