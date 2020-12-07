@@ -195,23 +195,23 @@ class Ui_MainWindow(object):
         self.checkBox = QtWidgets.QCheckBox(self.centralwidget)
         self.checkBox.setGeometry(QtCore.QRect(10, 20, 231, 23))
         self.checkBox.setObjectName("checkBox")
-        self.label_2 = QtWidgets.QLabel(self.centralwidget)
-        self.label_2.setGeometry(QtCore.QRect(260, 10, 41, 41))
-        self.label_2.setStyleSheet("QLabel {\n"
-"background-color: #00acdc;\n"
-"border: 1px solid;\n"
-"border-radius: 10px;\n"
+        self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_2.setGeometry(QtCore.QRect(270, 10, 41, 41))
+        self.pushButton_2.setStyleSheet("QPushButton{\n"
+"background: transparent;\n"
+"border: 0.1px solid #ffffff;\n"
 "}\n"
-"QLabel:hover{\n"
-"background-color: #00acdc;\n"
-"border: 2px solid #00617c;\n"
-"border-radius: 10px;\n"
+"QPushButton:hover{\n"
+"background: #089bcc;\n"
+"border: 1px solid #089bcc;\n"
+"border-radius: 7px;\n"
 "}")
-        self.label_2.setText("")
-        self.label_2.setPixmap(QtGui.QPixmap(":/res/image/st.png"))
-        self.label_2.setScaledContents(True)
-        self.label_2.setWordWrap(True)
-        self.label_2.setObjectName("label_2")
+        self.pushButton_2.setText("")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/res/image/st.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_2.setIcon(icon)
+        self.pushButton_2.setIconSize(QtCore.QSize(32, 32))
+        self.pushButton_2.setObjectName("pushButton_2")
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusBar = QtWidgets.QStatusBar(MainWindow)
         self.statusBar.setObjectName("statusBar")
@@ -222,7 +222,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "OverSSH"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.lineEdit.setPlaceholderText(_translate("MainWindow", "Логин"))
         self.lineEdit_2.setPlaceholderText(_translate("MainWindow", "Пароль"))
         self.pushButton.setText(_translate("MainWindow", "Подключиться"))

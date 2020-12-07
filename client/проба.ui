@@ -530,38 +530,38 @@ color: #22222e;
      <string>Не использовать авторизацию</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
+   <widget class="QPushButton" name="pushButton_2">
     <property name="geometry">
      <rect>
-      <x>260</x>
+      <x>270</x>
       <y>10</y>
       <width>41</width>
       <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">QLabel {
-background-color: #00acdc;
-border: 1px solid;
-border-radius: 10px;
+     <string notr="true">QPushButton{
+background: transparent;
+border: 0.1px solid #ffffff;
 }
-QLabel:hover{
-background-color: #00acdc;
-border: 2px solid #00617c;
-border-radius: 10px;
+QPushButton:hover{
+background: #089bcc;
+border: 1px solid #089bcc;
+border-radius: 7px;
 }</string>
     </property>
     <property name="text">
      <string/>
     </property>
-    <property name="pixmap">
-     <pixmap resource="resources.qrc">:/res/image/st.png</pixmap>
+    <property name="icon">
+     <iconset resource="resources.qrc">
+      <normaloff>:/res/image/st.png</normaloff>:/res/image/st.png</iconset>
     </property>
-    <property name="scaledContents">
-     <bool>true</bool>
-    </property>
-    <property name="wordWrap">
-     <bool>true</bool>
+    <property name="iconSize">
+     <size>
+      <width>32</width>
+      <height>32</height>
+     </size>
     </property>
    </widget>
   </widget>
