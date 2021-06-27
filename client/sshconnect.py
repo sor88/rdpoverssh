@@ -22,7 +22,11 @@ def read_settings():
     print(ip_server, ip_port, ssh_login)
     global readsettings
     if ip_port is not int:
+<<<<<<< HEAD
         ip_port = "Заполнено неверно"
+=======
+        ip_port = "Не заполнено"
+>>>>>>> 8241646bbd2e4704c2ed041c25d9c268a2e195b2
     else:
         ip_port == int(ip_port)
     readsettings = (ip_server, ip_port, ssh_login)
