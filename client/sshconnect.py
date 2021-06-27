@@ -21,7 +21,11 @@ def read_settings():
         ssh_login = x["settings"]["ssh_login"]
     print(ip_server, ip_port, ssh_login)
     global readsettings
-    readsettings = (ip_server, int(ip_port), ssh_login)
+    if ip_port is not int:
+        ip_port = "Не заполнено"
+    else:
+        ip_port == int(ip_port)
+    readsettings = (ip_server, ip_port, ssh_login)
     return(readsettings)
 
 readsettings = read_settings()
